@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Me">
+  <h1 style="text-align: center; margin-bottom: 1rem;">Let’s Connect</h1>
+  <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">
+    Questions, ideas, compliments, confessions? Drop me a note below.
+  </p>
+
+  <form id="contact-form" style="max-width: 500px; margin: 0 auto;" onsubmit="sendEmail(event)">
+    <label style="display: block; margin-bottom: 1rem;">
+      <span>Name</span><br />
+      <input type="text" name="name" required style="width: 100%; padding: 0.5rem;" />
+    </label>
+
+    <label style="display: block; margin-bottom: 1rem;">
+      <span>Email</span><br />
+      <input type="email" name="email" required style="width: 100%; padding: 0.5rem;" />
+    </label>
+
+    <label style="display: block; margin-bottom: 1rem;">
+      <span>Message</span><br />
+      <textarea name="message" rows="5" required style="width: 100%; padding: 0.5rem;"></textarea>
+    </label>
+
+    <button type="submit" style="padding: 0.75rem 1.5rem; background: #ff69b4; color: white; border: none; border-radius: 4px;">
+      Send 💌
+    </button>
+  </form>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script>
+
+    const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+    const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      (window as any).emailjs.init(PUBLIC_KEY);
+    });
+    
+    declare global {
+      interface Window {
+        emailjs: any;
+        sendEmail: (event: Event) => void;
+      }
+    }
+    window.sendEmail = function(event) {
+      event.preventDefault();
+      const form = document.getElementById('contact-form');
+      (window).emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+        .then(() => {
+          alert('Message sent successfully!');
+          if (form) (form as HTMLFormElement).reset();
+        })
+        .catch((error: any) => {
+          console.error('EmailJS error:', error);
+          alert('Failed to send message. Please try again later.');
+        });
+    };
+  </script>
+</Layout>
