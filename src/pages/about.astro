@@ -3,6 +3,92 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="About Me">
-  <h1>About Me</h1>
-  <p>Brief bio, skills, background, etc.</p>
+  <style lang="scss">
+    body {
+        background: linear-gradient(to bottom, #fff0f5, #ffffff);
+    }
+
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        pacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.6s ease-out 0.1s forwards;
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+      }
+
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      img {
+        width: 18rem;
+        height: 18rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .about-text {
+        max-width: 600px;
+      }
+
+      $highlight-pinks: (
+        #e91e63,
+        #f06292,
+        #ec407a,
+        #f48fb1,
+        #ff80ab,
+        #ff4081
+      );
+
+      @for $i from 1 through length($highlight-pinks) {
+        .about-text .hl-#{$i} {
+          color: nth($highlight-pinks, $i);
+          font-weight: bold;
+        }
+      }
+    }
+  </style>
+
+  <h1 style="text-align: center;">About Me</h1>
+
+  <div class="about-container">
+    <img src="/maud.jpg" alt="Photo of Me" />
+
+    <div class="about-text">
+      <p>
+        I’m a <span class="hl-1">full-stack software engineer</span> who thrives on turning real problems into <span class="hl-2">user-friendly solutions</span>. I’ve worked across the stack—from Java and Groovy backends to React and Electron frontends. I move quickly, learn fast, and adapt to the problem at hand.
+      </p>
+
+      <p>
+        I’ve <span class="hl-3">led feature development</span>, <span class="hl-4">authored internal documentation</span>, and <span class="hl-5">kept teams motivated</span> while shipping clean systems.
+      </p>
+
+      <p>
+        I currently work with <span class="hl-6">React, TypeScript, and PostgreSQL</span>, often in privacy-conscious or healthcare-adjacent projects. I care about clean interfaces, ethical tech, and reducing complexity.
+      </p>
+
+      <p>
+        I value <span class="hl-1">honing the craft</span>—not just shipping what “works.” Code should be understandable, maintainable, and a little elegant under pressure.
+      </p>
+
+      <p>
+        Outside of code, I paint surreal things, hike in the mountains, and occasionally commit culinary crimes. :)
+      </p>
+    </div>
+  </div>
 </Layout>
