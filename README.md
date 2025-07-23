@@ -1,43 +1,55 @@
-# Astro Starter Kit: Minimal
+Personal Portfolio Site
+=======================
 
-```sh
-npm create astro@latest -- --template minimal
-```
+This is my 2025 personal dev portfolio website built with Astro (https://astro.build). It’s a simple, fast, static site designed to showcase my GitHub projects, introduce who I am, and provide a way to get in touch... and maybe something else?
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Features
+--------
 
-## 🚀 Project Structure
+- Homepage: Short introduction with navigation links
+- About: A little bit about me, my background, and what I care about
+- Projects: A list of selected GitHub projects with links and brief descriptions
+- Contact: Form to send me a message via EmailJS (https://www.emailjs.com)
 
-Inside of your Astro project, you'll see the following folders and files:
+Tech Stack
+----------
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Astro: Static site generator
+- EmailJS: Handles contact form submissions without a backend
+- SCSS: Optional styling preprocessor
+- Deployed via GitHub Pages
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Getting Started
+---------------
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Install dependencies:
 
-Any static assets, like images, can be placed in the `public/` directory.
+    npm install
 
-## 🧞 Commands
+Run the dev server:
 
-All commands are run from the root of the project, from a terminal:
+    npm run dev
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Build the site:
 
-## 👀 Want to learn more?
+    npm run build
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Deploy to GitHub Pages:
+
+    npm run deploy
+
+Environment Variables
+---------------------
+
+Create a `.env` file with the following:
+
+    PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+    PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+    PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+
+Do **not** commit your `.env` file.
+
+License
+-------
+
+This project is open source, MIT licensed.
