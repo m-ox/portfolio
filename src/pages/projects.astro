@@ -1,11 +1,114 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Tag from '../components/Tag.astro';
 ---
 
 <Layout title="Projects">
-  <h1>Projects</h1>
-  <ul>
-    <li><a href="https://github.com/yourname/project1">Project 1</a></li>
-    <li><a href="https://github.com/yourname/project2">Project 2</a></li>
-  </ul>
+  <style lang="scss">
+    @use "sass:list";
+
+    body {
+      background: #e6fff5; // mint green background
+    }
+
+    .projects-wrapper {
+      max-width: 900px;
+      margin: 2rem auto;
+      display: grid;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .project-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: fadeInUp 0.5s ease-out both;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+      }
+
+      p {
+        margin: 0.5rem 0 1rem;
+        line-height: 1.6;
+      }
+
+      a {
+        color: #1dbf73; // mint accent
+        font-weight: bold;
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+
+  <div class="projects-wrapper">
+  <div class="project-card">
+    <h2>AdLib Generator</h2>
+    <p>
+      A web app for generating shareable adlibs with Base64 serialization and local storage. Built with Next.js, Bun, and PostgreSQL.
+    </p>
+    <a href="https://github.com/m-ox/adlib-app" target="_blank">View on GitHub</a>
+    <div class="tags">
+      <Tag type="Next.js" />
+      <Tag type="Bun" />
+      <Tag type="PostgreSQL" />
+      <Tag type="Base64" />
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h2>FHIR Record Viewer</h2>
+    <p>
+      Lightweight frontend for browsing FHIR-formatted healthcare data, using React and MUI. Focus on PHI compliance and user experience.
+    </p>
+    <a href="https://github.com/m-ox/fhir-viewer" target="_blank">View on GitHub</a>
+    <div class="tags">
+      <Tag type="React" />
+      <Tag type="MUI" />
+      <Tag type="FHIR" />
+      <Tag type="Privacy" />
+    </div>
+  </div>
+
+  <div class="project-card">
+    <h2>Legacy ETL Pipeline</h2>
+    <p>
+      Java-based ETL system modernized with CI/CD, test coverage, and observability. Integrated Groovy-based Jenkins workflows.
+    </p>
+    <a href="https://github.com/m-ox/etl-modernization" target="_blank">View on GitHub</a>
+    <div class="tags">
+      <Tag type="Java" />
+      <Tag type="Groovy" />
+      <Tag type="CI/CD" />
+      <Tag type="Jenkins" />
+    </div>
+  </div>
+</div>
+
 </Layout>

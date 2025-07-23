@@ -1,0 +1,41 @@
+---
+const { type } = Astro.props as { type: string };
+
+const tagColors: Record<string, string> = {
+  JavaScript: '#f7df1e',
+  TypeScript: '#3178c6',
+  React: '#61dafb',
+  PostgreSQL: '#336791',
+  Groovy: '#4298b8',
+  Java: '#b07219',
+  Electron: '#47848f',
+  FHIR: '#e74c3c',
+  CI: '#00bfa5',
+};
+
+function stringToColor(str: string) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const color = `hsl(${hash % 360}, 70%, 60%)`;
+  return color;
+}
+
+const bgColor = tagColors[type] || stringToColor(type);
+---
+
+<span
+  style={`
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: ${bgColor};
+    color: #fff;
+    white-space: nowrap;
+  `}
+>
+  {type}
+</span>
