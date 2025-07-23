@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="About Me">
   <style lang="scss">
+    @use "sass:list";
     body {
         background: linear-gradient(to bottom, #fff0f5, #ffffff);
     }
@@ -55,9 +56,9 @@ import Layout from '../layouts/Layout.astro';
         #ff4081
       );
 
-      @for $i from 1 through length($highlight-pinks) {
+      @for $i from 1 through list.length($highlight-pinks) {
         .about-text .hl-#{$i} {
-          color: nth($highlight-pinks, $i);
+          color: list.nth($highlight-pinks, $i);
           font-weight: bold;
         }
       }
