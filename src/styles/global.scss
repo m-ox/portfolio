@@ -38,3 +38,10 @@ button {
     border: none;
     border-radius: 4px;
 }
+
+.section-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
