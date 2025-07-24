@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './RandomQuote.module.scss';
 
 const quotes = [
@@ -9,7 +9,7 @@ const quotes = [
   "Yes, I have a real skunk that I use for emotional support.",
   "Topbar is always 4rem. I don't make the rules, just how it has to be.",
   "No Meeting Friday is forever implemented.",
-  "Sleep on Ghost(tm) energy drinks to get that good GOOD rest!",
+  "Sleep on Ghost™ energy drinks to get that good GOOD rest!",
   "If you rigidly can only code in Python forever, good luck.",
   "I'm mid debugging some hell rn but if you write your conundrum I can look at it with you for fun maybe later",
   "I don't know how to use Astro.",
@@ -20,26 +20,34 @@ const quotes = [
 ];
 
 export default function RandomQuoteGen() {
-  const [quote, setQuote] = useState(() => {
-    const i = Math.floor(Math.random() * quotes.length);
-    return quotes[i];
-  });
+  const [quote, setQuote] = useState<string | null>(null);
 
-  const roll = () => {
-    const i = Math.floor(Math.random() * quotes.length);
-    setQuote(quotes[i]);
+  useEffect(() => {
+    const getRandom = () => quotes[Math.floor(Math.random() * quotes.length)];
+    setQuote(getRandom());
+  }, []);
+
+  const handleReroll = () => {
+    const getRandom = () => quotes[Math.floor(Math.random() * quotes.length)];
+    setQuote(getRandom());
   };
+
+  if (!quote) return null;
 
   return (
     <div>
       <blockquote className={styles.contactQuote}>"{quote}"</blockquote>
       <button
-        onClick={roll}
-        // style="padding: 0.75rem 1.5rem; background: #ff69b4; color: white; border: none; border-radius: 4px;"
+        onClick={handleReroll}
         style={{
-            background: "#68b9ff",
-            color: "white",
-            float: 'right',
+          background: "#68b9ff",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          padding: "0.5rem 1rem",
+          fontWeight: "bold",
+          marginTop: "0.5rem",
+          float: "right",
         }}
       >
         Reroll
