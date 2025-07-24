@@ -9,7 +9,7 @@ interface Props {
   title?: string;
 }
 
-export default function CardDraggable({ children, className = '', style = {}, title }: Props) {
+export default function CardCL({ children, className = '', style = {}, title }: Props) {
   const [isMounted, setIsMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -55,7 +55,17 @@ export default function CardDraggable({ children, className = '', style = {}, ti
       dragTransition={{ power: 0.05, timeConstant: 50 }}
       whileTap={{ scale: 1.02, rotate: Math.random() * 6 - 3 }}
     >
-      {title && <h2>{title}</h2>}
+      {title && (
+  <h2>
+    {title.split(/(Maud)/i).map((part, idx) => /Maud/i.test(part) ? (
+        <span key={idx} className="maudlin oxalis">{part}</span>
+      ) : (
+        <span key={idx}>{part}</span>
+      )
+    )}
+  </h2>
+)}
+
       {children}
     </motion.div>
   );

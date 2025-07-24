@@ -2,6 +2,7 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card/Card.astro';
+import GitHubStats from '../components/GithubStats/GitHubStats.astro';
 ---
 
 <Layout title="Home">
@@ -38,6 +39,10 @@ import Card from '../components/Card/Card.astro';
       <a href="https://docs.google.com/document/d/1HIBwf6mr-sEhKQi-kutVROjBaWRFJSqasI2gcFCEYWs/edit?usp=sharing">
         Work history and skills
       </a>
+    </Card>
+
+    <Card title="Public GitHub Stats">
+      <GitHubStats />
     </Card>
     
   </section>

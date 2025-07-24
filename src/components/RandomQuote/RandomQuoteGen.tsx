@@ -18,6 +18,7 @@ const quotes = [
   "Why rubberduck when you can have emotional support code skunk?",
   "Hehehehehehehhehehheheh.",
   "Math.random() is actually, like, really bad at being random.",
+  "Stop wasting tokens explaining and just regenerate.",
   // chat gpt quotes lol
   "I'm not fixing it, I'm simply removing its ability to fail.",
   "Docker builds character. Mostly through pain.",

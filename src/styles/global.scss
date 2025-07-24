@@ -44,3 +44,16 @@ button {
   flex-wrap: wrap;
   margin: 2rem;
 }
+
+// for fun
+.maudlin {
+  color: black;
+  text-shadow: 0 0 2px #c084fc;
+  transition: text-shadow 250ms ease-in-out, color 300ms ease-in-out;
+}
+
+.oxalis:hover {
+  text-shadow:
+    0 0 4px #c084fc,
+    0 0 6px #a855f7;
+}
