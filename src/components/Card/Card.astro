@@ -1,0 +1,10 @@
+---
+import CardDraggable from './CardDraggable.tsx';
+const { title = '', noPadding = false, class: className = '', style = '' } = Astro.props;
+const paddingClass = noPadding ? 'no-padding' : '';
+const classes = ['card', paddingClass, className].filter(Boolean).join(' ');
+---
+
+<CardDraggable client:load title={title} className={classes} style={style}>
+  <slot />
+</CardDraggable>
