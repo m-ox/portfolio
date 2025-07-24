@@ -19,7 +19,7 @@ const quotes = [
   "Math.random() is actually, like, really bad at being random."
 ];
 
-export default function RQ() {
+export default function RandomQuoteGen() {
   const [quote, setQuote] = useState(() => {
     const i = Math.floor(Math.random() * quotes.length);
     return quotes[i];
