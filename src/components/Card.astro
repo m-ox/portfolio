@@ -4,7 +4,7 @@ const { title, noPadding = false, class: className = '', style = '' } = Astro.pr
 const paddingClass = noPadding ? 'no-padding' : '';
 ---
 
-<div class={`card ${paddingClass} ${className}`} style={style}>
+<div class={[ 'card', paddingClass, className ].filter(Boolean).join(' ')} style={style}>
     {title && <h2>{title}</h2>}
     <slot />
 </div>
