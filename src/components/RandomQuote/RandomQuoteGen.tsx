@@ -19,22 +19,14 @@ const quotes = [
   "Hehehehehehehhehehheheh.",
   "Math.random() is actually, like, really bad at being random.",
   // chat gpt quotes lol
-  "I’m not fixing it, I’m simply removing its ability to fail.",
+  "I'm not fixing it, I'm simply removing its ability to fail.",
   "Docker builds character. Mostly through pain.",
-  "‘It works on my machine’ is now a core principle.",
+  "'It works on my machine' is now a core principle.",
   "Every feature is a bug if you look hard enough.",
-  "I use Vim but only as a threat.",
-  "My CSS is held together by hope and !important.",
-  "The real API is the friends we made along the way.",
   "npm install depression --save-dev",
-  "This codebase was clearly written by someone who hated themselves, and now it's me.",
-  "I architect my apps like a cryptid builds a nest.",
-  "Tabs versus spaces? I'm using Morse code now.",
-  "I renamed prod to prod-ish for morale reasons.",
-  "The Agile sprint is just my life running in circles.",
-  "I solved it by rewriting everything and now it's your problem.",
-  "Yes, it's an AI-generated bug. The future is now.",
-  "Sometimes I close the laptop to let the code think about what it’s done."
+  "JUST PIVOT.",
+  "Tabs versus spaces? How about: 3, 7, 11 space indentation! Now we can all be happy.",
+  "Yes, it's an AI-generated bug. The future is now."
 ];
 
 export default function RandomQuoteGen() {
