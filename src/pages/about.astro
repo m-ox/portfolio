@@ -135,5 +135,30 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </Card>
     </div>
-  </section>
+  </Card>
+
+  <div class="about-container">
+    <Card title="Summary">
+      <p class="about-summary">
+        I’m a <span class="hl-1">full-stack software engineer</span> who thrives on turning real-world problems into <span class="hl-2">user-centered, performant systems</span>. I’ve contributed to projects ranging from <span class="hl-3">Java and Node backends</span> to <span class="hl-4">TypeScript frontends built with React and Electron</span>. Much of my recent work has focused on building intuitive healthcare tools in <span class="hl-1">FHIR-compliant environments</span>, where I value <span class="hl-2">clean interfaces</span> and <span class="hl-3">ethical responsibility</span>. I move easily between feature development, refactoring, and internal documentation, and I gravitate toward <span class="hl-4">mission-driven teams</span> that prioritize clarity and autonomy.
+      </p>
+    </Card>
+
+    <Card title="Badge Board">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        {[
+          'HTML', 'CSS', 'Python', 'JavaScript', 'TypeScript',
+          'React', 'Node.js', 'PostgreSQL', 'Java', 'Groovy',
+          'Electron', 'FHIR', 'Docker', 'Next.js', 'Astro',
+          'Spring Boot', 'MongoDB', 'Azure', 'EmailJS', 'Svelte',
+          'Vite', 'Bun', 'SCSS', 'MaterialUI', 'TailwindCSS',
+          'RESTful APIs', 'Agile', 'Git', 'CI/CD', 'Testing',
+          '508 Compliance', 'Jest', 'Vitest',
+        ].filter(Boolean).map(type => (
+          <Tag type={type} />
+        ))}
+      </div>
+    </Card>
+  </div>
+
 </Layout>
