@@ -1,99 +1,101 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
 ---
 
 <Layout title="Contact Me">
+
   <style lang="scss">
     body {
-      background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+      background: #f0f8ff;
+    }
+
+    .contact-section {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .contact-wrapper {
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-      max-width: 600px;
-      margin: 3rem auto;
-      animation: fadeIn 0.6s ease-out;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
 
-    form {
-      margin-top: 2rem;
+    .contact-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      a {
+        text-decoration: none;
+        color: #0077cc;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
   </style>
 
-  <div class="contact-wrapper">
-    <h1 style="text-align: center; margin-bottom: 1rem;">Let’s Connect</h1>
-    <p style="text-align: center; max-width: 500px; margin: 0 auto 2rem;">
-      Questions, ideas, compliments, confessions?
-      <br/>
-      Drop me a note below.
-    </p>
+  <section class="contact-section">
+    <Card title="Let’s Connect">
+      <p style="text-align: center; max-width: 500px; margin: 0 auto 2rem;">
+        Questions, ideas, compliments, confessions?<br />
+        Drop me a note below.
+      </p>
+      <form id="contact-form" onsubmit="sendEmail(event)">
+        <label style="display: block; margin-bottom: 1rem;">
+          <span>Name</span><br />
+          <input type="text" name="name" required style="width: 100%; padding: 0.5rem;" />
+        </label>
 
-    <form id="contact-form" onsubmit="sendEmail(event)">
-      <label style="display: block; margin-bottom: 1rem;">
-        <span>Name</span><br />
-        <input type="text" name="name" required style="width: 100%; padding: 0.5rem;" />
-      </label>
+        <label style="display: block; margin-bottom: 1rem;">
+          <span>Email</span><br />
+          <input type="email" name="email" required style="width: 100%; padding: 0.5rem;" />
+        </label>
 
-      <label style="display: block; margin-bottom: 1rem;">
-        <span>Email</span><br />
-        <input type="email" name="email" required style="width: 100%; padding: 0.5rem;" />
-      </label>
+        <label style="display: block; margin-bottom: 1rem;">
+          <span>Message</span><br />
+          <textarea name="message" rows="5" required style="width: 100%; padding: 0.5rem;"></textarea>
+        </label>
 
-      <label style="display: block; margin-bottom: 1rem;">
-        <span>Message</span><br />
-        <textarea name="message" rows="5" required style="width: 100%; padding: 0.5rem;"></textarea>
-      </label>
+        <button style="background: #68b9ff; color: white;" type="submit">
+          Send
+        </button>
+      </form>
+    </Card>
 
-      <button type="submit" style="padding: 0.75rem 1.5rem; background: #ff69b4; color: white; border: none; border-radius: 4px;">
-        Send 💌
-      </button>
-    </form>
-  </div>
+    <Card title="Discord">
+      <div class="contact-socials">
+        <a href="https://discord.gg/sMV8TJyWF5" class="tag">Join DevCru Discord</a>
+      </div>
+    </Card>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <Card title="Find Me Elsewhere">
+      <div class="contact-socials">
+        <a href="https://github.com/m-ox" class="tag">GitHub</a>
+        <a href="https://www.linkedin.com/in/lena-nordby-47762511a/" class="tag">LinkedIn</a>
+      </div>
+    </Card>
 
-  <script>
-    const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
-    const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+    <Card title="FAQ">
+      <p>Yes, I read these. No, I won’t code your crypto dream. Maybe, if it’s weird enough.</p>
+    </Card>
 
-    window.addEventListener('DOMContentLoaded', () => {
-      (window).emailjs.init(PUBLIC_KEY);
-    });
+    <Card title="Open To">
+      <p><strong>Remote roles</strong>, <strong>cool tech collaborations</strong>, and <strong>maybe a deranged pen pal</strong>.</p>
+    </Card>
 
-    declare global {
-      interface Window {
-        emailjs: any;
-        sendEmail: (event: Event) => void;
-      }
-    }
+    <Card title="Random Skunk Wisdom">
+      <RandomQuote />
+    </Card>
 
-    window.sendEmail = function(event) {
-      event.preventDefault();
-      const form = document.getElementById('contact-form');
-      (window).emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
-        .then(() => {
-          alert('Message sent successfully!');
-          if (form) (form as HTMLFormElement).reset();
-        })
-        .catch((error: any) => {
-          console.error('EmailJS error:', error);
-          alert('Failed to send message. Please try again later.');
-        });
-    };
-  </script>
+  </section>
 </Layout>

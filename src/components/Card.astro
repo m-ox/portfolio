@@ -1,16 +1,17 @@
 ---
 /** Props: title?, noPadding? */
-const { title, noPadding = false } = Astro.props;
+const { title, noPadding = false, class: className = '' } = Astro.props;
 const paddingClass = noPadding ? 'no-padding' : '';
 ---
 
-<div class={`card ${paddingClass}`}>
+<div class={`card ${paddingClass} ${className}`}>
     {title && <h2 class="card-title">{title}</h2>}
     <slot />
 </div>
 
 <style lang="scss">
 .card {
+    flex-grow: 1;
     background: white;
     border-radius: 1rem;
     padding: 1.5rem;
