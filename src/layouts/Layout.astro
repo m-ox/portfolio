@@ -9,7 +9,6 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
@@ -25,7 +24,7 @@ const { title } = Astro.props;
     <main style="flex: 1; padding: 1rem; align-self: anchor-center;">
       <slot />
     </main>
-    <footer style="padding: 1rem; text-align: center; font-size: 0.9rem; color: #666;">
+    <footer style="padding: 1rem; text-align: center; font-size: .9rem; color: #666;">
       Created using Astro JS with &#10084;&#65039; by <a href="https://github.com/m-ox" target="_blank" rel="noopener noreferrer">m-ox</a>
     </footer>
   </body>

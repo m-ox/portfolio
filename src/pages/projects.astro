@@ -8,7 +8,11 @@ import Tag from '../components/Tag.astro';
     @use "sass:list";
 
     body {
-      background: #e6fff5; // mint green background
+      background: #e6fff5;
+    }
+
+    p {
+        margin: 0;
     }
 
     .projects-wrapper {
@@ -22,6 +26,9 @@ import Tag from '../components/Tag.astro';
     .project-card {
       background: white;
       padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
       border-radius: 1rem;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -33,17 +40,17 @@ import Tag from '../components/Tag.astro';
       }
 
       h2 {
-        margin-top: 0;
+        margin: 0;
         font-size: 1.5rem;
       }
 
       p {
-        margin: 0.5rem 0 1rem;
+        margin: 0;
         line-height: 1.6;
       }
 
       a {
-        color: #1dbf73; // mint accent
+        color: #1dbf73;
         font-weight: bold;
       }
     }
@@ -65,50 +72,81 @@ import Tag from '../components/Tag.astro';
         transform: none;
       }
     }
+
+    .coming-soon {
+        position: relative;
+        opacity: 0.5;
+        pointer-events: none;
+
+        &::after {
+            content: "Coming Soon";
+            position: absolute;
+            top: 1rem;
+            left: -3.5rem;
+            transform: rotate(-45deg);
+            background: #ff82b6;
+            color: white;
+            font-weight: bold;
+            padding: .25rem 2rem;
+            font-size: .75rem;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+    }
+
+    .project-card.coming-soon {
+        background: #e2d0d8;
+        mix-blend-mode: difference;
+    }
+
   </style>
 
   <div class="projects-wrapper">
-  <div class="project-card">
+  <div class="projects-wrapper">
+  <div class="project-card coming-soon">
     <h2>AdLib Generator</h2>
-    <p>
-      A web app for generating shareable adlibs with Base64 serialization and local storage. Built with Next.js, Bun, and PostgreSQL.
-    </p>
-    <a href="https://github.com/m-ox/adlib-app" target="_blank">View on GitHub</a>
-    <div class="tags">
-      <Tag type="Next.js" />
-      <Tag type="Bun" />
-      <Tag type="PostgreSQL" />
-      <Tag type="Base64" />
-    </div>
+    <p>A web app for generating shareable adlibs using Base64 serialization and local storage. Built with Next.js, Bun, and PostgreSQL.</p>
+    <div><Tag type="Next.js" /> <Tag type="Bun" /> <Tag type="PostgreSQL" /></div>
+    <!-- <a href="https://github.com/m-ox/adlib-app" target="_blank">View on GitHub</a> -->
   </div>
 
   <div class="project-card">
-    <h2>FHIR Record Viewer</h2>
-    <p>
-      Lightweight frontend for browsing FHIR-formatted healthcare data, using React and MUI. Focus on PHI compliance and user experience.
-    </p>
-    <a href="https://github.com/m-ox/fhir-viewer" target="_blank">View on GitHub</a>
-    <div class="tags">
-      <Tag type="React" />
-      <Tag type="MUI" />
-      <Tag type="FHIR" />
-      <Tag type="Privacy" />
-    </div>
+    <h2>SvelteWeatherApp</h2>
+    <p>App in a day build to experiment with Svelte and present to team for our weekly hosted Coffee and Code. Pulls real-time data from a weather API. Simple and minimal, built with Vite.</p>
+    <div><Tag type="Svelte" /> <Tag type="Vite" /> <Tag type="API" /></div>
+    <a href="https://github.com/m-ox/SvelteWeatherApp" target="_blank">View on GitHub</a>
   </div>
 
   <div class="project-card">
-    <h2>Legacy ETL Pipeline</h2>
-    <p>
-      Java-based ETL system modernized with CI/CD, test coverage, and observability. Integrated Groovy-based Jenkins workflows.
-    </p>
-    <a href="https://github.com/m-ox/etl-modernization" target="_blank">View on GitHub</a>
-    <div class="tags">
-      <Tag type="Java" />
-      <Tag type="Groovy" />
-      <Tag type="CI/CD" />
-      <Tag type="Jenkins" />
-    </div>
+    <h2>athena-concept-formatter</h2>
+    <p>Plain HTML/JS tool for converting Athena term exports into SQL insert statements for `public.concept`. Created for internal use at a job, but maybe it'll help down the road.</p>
+    <div><Tag type="HTML" /> <Tag type="JavaScript" /> <Tag type="CSS" /> <Tag type="SQL" /></div>
+    <a href="https://github.com/m-ox/athena-concept-formatter" target="_blank">View on GitHub</a>
   </div>
+
+  <div class="project-card">
+    <h2>SpringFhirIngestion</h2>
+    <p>FHIR ingestion API built in Spring Boot. Basic endpoints for parsing and accessing fields from incoming patient JSON objects.</p>
+    <div><Tag type="Java" /> <Tag type="Spring Boot" /> <Tag type="FHIR" /> <Tag type="API" /> </div>
+    <a href="https://github.com/m-ox/SpringFhirIngestion" target="_blank">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h2>saraswati-dashboard</h2>
+    <p>Heavily customized fork of Notus React. Developed for a healthcare client. Contributed extensive work in layout and styling.</p>
+    <div><Tag type="React" /> <Tag type="JavaScript" /> <Tag type="Healthcare" /> <Tag type="SCSS" /> <Tag type="MaterialUI" /> </div>
+    <a href="https://github.com/amida-tech/saraswati-dashboard" target="_blank">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h2>dev-site-25</h2>
+    <p>My current personal site—built with Astro and custom SCSS, featuring handcrafted components and animations. In fact, you're looking at it right now if you're reading this in browser!</p>
+    <div><Tag type="Astro" /> <Tag type="SCSS" /> <Tag type="TypeScript" /> <Tag type="Personal" /></div>
+    <a href="https://github.com/m-ox/dev-site-25" target="_blank">View on GitHub</a>
+  </div>
+</div>
+
 </div>
 
 </Layout>

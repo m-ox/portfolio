@@ -2,15 +2,15 @@
 const { type } = Astro.props as { type: string };
 
 const tagColors: Record<string, string> = {
-  JavaScript: '#f7df1e',
-  TypeScript: '#3178c6',
-  React: '#61dafb',
-  PostgreSQL: '#336791',
-  Groovy: '#4298b8',
-  Java: '#b07219',
-  Electron: '#47848f',
-  FHIR: '#e74c3c',
-  CI: '#00bfa5',
+  JavaScript: '#fff8b3',
+  TypeScript: '#c5dfff',
+  React: '#d0f4ff',
+  PostgreSQL: '#c3d4f3',
+  Groovy: '#cceeff',
+  Java: '#f6c8b8',
+  Electron: '#d3f0f5',
+  FHIR: '#ffd6d6',
+  CI: '#b2f2e6',
 };
 
 function stringToColor(str: string) {
@@ -18,8 +18,8 @@ function stringToColor(str: string) {
   for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
-  const color = `hsl(${hash % 360}, 70%, 60%)`;
-  return color;
+  const hue = hash % 360;
+  return `hsl(${hue}, 60%, 85%)`; // softer pastel tone
 }
 
 const bgColor = tagColors[type] || stringToColor(type);
@@ -32,8 +32,8 @@ const bgColor = tagColors[type] || stringToColor(type);
     font-size: 0.75rem;
     font-weight: 600;
     border-radius: 9999px;
+    color: #333;
     background-color: ${bgColor};
-    color: #fff;
     white-space: nowrap;
   `}
 >
