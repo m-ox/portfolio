@@ -5,7 +5,6 @@ import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
 ---
 
 <Layout title="Contact Me">
-
   <style lang="scss">
     body {
       background: #f0f8ff;
@@ -13,7 +12,7 @@ import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
 
     .contact-section {
       display: flex;
-      gap: 1rem;
+      gap: 4rem;
       flex-wrap: wrap;
     }
 
@@ -45,8 +44,8 @@ import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
   </style>
 
   <section class="contact-section">
-    <Card title="Let’s Connect">
-      <p style="text-align: center; max-width: 500px; margin: 0 auto 2rem;">
+    <Card title="Let's Connect">
+      <p style="text-align: center; width: 400px; margin: 0 auto 2rem;">
         Questions, ideas, compliments, confessions?<br />
         Drop me a note below.
       </p>
@@ -72,25 +71,23 @@ import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
       </form>
     </Card>
 
-    <Card title="Discord">
-      <div class="contact-socials">
-        <a href="https://discord.gg/sMV8TJyWF5" class="tag">Join DevCru Discord</a>
-      </div>
-    </Card>
+    <Card>
+      <h2>FAQ</h2>
+      <p>Yes, I read these. No, I won’t code your crypto dream. Maybe, if it’s weird enough.</p>
 
-    <Card title="Find Me Elsewhere">
+      <h2>Open To</h2>
+      <p>Remote roles, cool tech collaborations, and <i>maybe</i> a deranged pen pal.</p>
+
+      <h2>Find Me Elsewhere</h2>
       <div class="contact-socials">
         <a href="https://github.com/m-ox" class="tag">GitHub</a>
         <a href="https://www.linkedin.com/in/lena-nordby-47762511a/" class="tag">LinkedIn</a>
       </div>
-    </Card>
-
-    <Card title="FAQ">
-      <p>Yes, I read these. No, I won’t code your crypto dream. Maybe, if it’s weird enough.</p>
-    </Card>
-
-    <Card title="Open To">
-      <p><strong>Remote roles</strong>, <strong>cool tech collaborations</strong>, and <strong>maybe a deranged pen pal</strong>.</p>
+      
+      <h2>Discord Community</h2>
+      <div class="contact-socials">
+        <a href="https://discord.gg/your-discord-link" class="tag">Join the Skunk Discord</a>
+      </div>
     </Card>
 
     <Card title="Random Skunk Wisdom">
