@@ -11,7 +11,4 @@ export default defineConfig({
     format: 'directory',
     outDir: 'dist',
   },
-  vite: {
-    base: '/portfolio/',
-  },
 });
