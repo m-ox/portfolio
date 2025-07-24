@@ -4,10 +4,10 @@ const currentPath = Astro.url.pathname;
 ---
 
 <nav class="navbar">
-  <a href="/" class={`nav-link home${currentPath === '/' ? ' active' : ''}`} aria-disabled={currentPath === '/'} tabindex={currentPath === '/' ? -1 : undefined}>Home</a>
-  <a href="/about" class={`nav-link about${currentPath === '/about' ? ' active' : ''}`} aria-disabled={currentPath === '/about'} tabindex={currentPath === '/about' ? -1 : undefined}>About</a>
-  <a href="/projects" class={`nav-link projects${currentPath === '/projects' ? ' active' : ''}`} aria-disabled={currentPath === '/projects'} tabindex={currentPath === '/projects' ? -1 : undefined}>Projects</a>
-  <a href="/contact" class={`nav-link contact${currentPath === '/contact' ? ' active' : ''}`} aria-disabled={currentPath === '/contact'} tabindex={currentPath === '/contact' ? -1 : undefined}>Contact + Extras 😉</a>
+  <a href="/portfolio" class={`nav-link home${currentPath === '/' ? ' active' : ''}`} aria-disabled={currentPath === '/'} tabindex={currentPath === '/' ? -1 : undefined}>Home</a>
+  <a href="/portfolio/about" class={`nav-link about${currentPath === '/portfolio/about' ? ' active' : ''}`} aria-disabled={currentPath === '/portfolio/about'} tabindex={currentPath === '/portfolio/about' ? -1 : undefined}>About</a>
+  <a href="/portfolio/projects" class={`nav-link projects${currentPath === '/portfolio/projects' ? ' active' : ''}`} aria-disabled={currentPath === '/portfolio/projects'} tabindex={currentPath === '/portfolio/projects' ? -1 : undefined}>Projects</a>
+  <a href="/portfolio/contact" class={`nav-link contact${currentPath === '/portfolio/contact' ? ' active' : ''}`} aria-disabled={currentPath === '/portfolio/contact'} tabindex={currentPath === '/portfolio/contact' ? -1 : undefined}>Contact</a>
 </nav>
 
 <style lang="scss">
