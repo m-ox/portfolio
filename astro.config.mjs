@@ -2,7 +2,13 @@ import react from '@astrojs/react';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  integrations: [react()],
+  site: 'https://m-ox.github.io',
+  base: '/portfolio/',
   output: 'static',
-  base: '/dev-site-25/',
+  trailingSlash: 'ignore',
+  integrations: [react()],
+  build: {
+    format: 'directory',
+    outDir: 'dist',
+  },
 });
