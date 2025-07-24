@@ -17,7 +17,7 @@ import Layout from '../layouts/Layout.astro';
       align-items: center;
       gap: 2rem;
       padding: 2rem 0;
-      pacity: 0;
+      opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 0.6s ease-out 0.1s forwards;
 
@@ -27,7 +27,6 @@ import Layout from '../layouts/Layout.astro';
             transform: none;
         }
       }
-
 
       @media (min-width: 768px) {
         flex-direction: row;
@@ -43,6 +42,19 @@ import Layout from '../layouts/Layout.astro';
 
       .about-text {
         // max-width: 600px;
+      }
+    }
+
+    .about-flex {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+        text-align: left;
       }
     }
 
@@ -70,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
   <h1 style="text-align: center;">About Me</h1>
 
   <Card>
-    <div style="display: flex; flex-direction: row; align-items: center; gap: 2rem; text-align: center;">
+    <div class="about-flex">
       <img src="/maud.jpg" alt="Photo of Me" style="width: 12rem; height: 12rem; border-radius: 50%; object-fit: cover;" />
 
       <div style="text-align: left; display: grid; gap: 1.5rem;">
@@ -116,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
             'React', 'Node.js', 'PostgreSQL', 'Java', 'Groovy',
             'Electron', 'FHIR', 'Docker', 'Next.js', 'Astro',
             'Spring Boot', 'MongoDB', 'Azure', 'EmailJS', 'Svelte',
-            'Vite', 'Bun', 'SCSS', 'MaterialUI', 
+            'Vite', 'Bun', 'SCSS', 'MaterialUI' 
           ].map(type => (
             <Tag type={type} />
           ))
