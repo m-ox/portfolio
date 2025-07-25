@@ -5,7 +5,8 @@ const highlightWords = [
   'fun', 'logic', 'creative', 'code',
   'maudlin', 'oxalis', 'm-ox', 'api',
   'experiment', 'styling', 'ideas',
-  'delivery', 'yes', 'deranged', 'skunk'
+  'delivery', 'yes', 'deranged', 'skunk',
+  'silly', 'skills'
 ];
 
 const regex = new RegExp(`\\b(${highlightWords.join('|')})\\b`, 'gi');
