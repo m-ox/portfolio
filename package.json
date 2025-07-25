@@ -13,6 +13,7 @@
     "@astrojs/vercel": "^8.2.3",
     "@emailjs/browser": "^4.4.1",
     "astro": "^5.12.3",
+    "emailjs": "^4.0.3",
     "framer-motion": "^12.23.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
