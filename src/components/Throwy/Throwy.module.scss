@@ -1,30 +1,40 @@
 .throwy {
-  width: 5rem;
+  width: 2rem;
   height: fit-content;
   display: inline-block;
   will-change: transform;
+  z-index: 2;
+  position: absolute;
+  will-change: transform;
+}
+
+:global(.marble) {
+  transform: translate(337.39px) translateY(-825.212px) rotateX(8deg) rotateY(8deg);
+  position: absolute;
   z-index: 9999;
+  width: 4rem !important;
 }
 
 :global(.plant) {
-  transform: translateX(1167.39px) translateY(-425.212px) rotateX(8deg) rotateY(8deg);
+  transform: translate(1167.39px) translateY(-425.212px) rotateX(8deg) rotateY(8deg);
   position: absolute;
   z-index: 9999;
 }
 
 :global(.toy) {
-  transform: translateX(-192.667px) translateY(-443.01px) rotateX(8deg) rotateY(-8deg);
+  transform: translate(-127.39px) translateY(-625.212px) rotateX(8deg) rotateY(8deg);
   position: absolute;
   z-index: 9999;
 }
 
 :global(.glasses) {
-  transform: translateX(302.017px) translateY(-142.035px) rotateX(8deg) rotateY(8deg);
+  transform: translateX(302.017px) translateY(-312.035px) rotateX(8deg) rotateY(8deg);
   position: absolute;
   z-index: 9999;
 }
 
 :global(.mobile.plant),
+:global(.mobile.marble),
 :global(.mobile.toy),
 :global(.mobile.glasses) {
   transform: none !important;

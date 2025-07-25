@@ -17,6 +17,7 @@ export default function Toggle({
 }: ToggleProps) {
 
   const handleClicky = () => {
+    console.log('click')
     onToggle?.(!value);
   }
 

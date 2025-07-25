@@ -47,8 +47,9 @@ const GitHubStats: FC = () => {
       .catch(() => setError(true));
   }, []);
 
+  // If on GitHub Pages, show a placeholder image
   if (error) return (
-    <div style={{ height: isMobile ? "100%" : "30rem" }}>
+    <div style={{ height: isMobile ? "100%" : "40rem", width: isMobile ? "100%" : "42rem" }}>
       <img
         src="https://ghchart.rshah.org/m-ox"
         alt="GitHub Contribution Chart"

@@ -5,13 +5,18 @@ import IntroSection from '../components/HomeSections/IntroSection.astro';
 import InfoSection from '../components/HomeSections/InfoSection.astro';
 import GitHubSection from '../components/HomeSections/GitHubSection.astro';
 import PortfolioBanner from '../components/HomeSections/PortfolioBanner.astro';
+import Throwy from '../components/Throwy/Throwy.astro';
+import Throwers from '../components/Throwers/Throwers.astro';
 ---
 
 <Layout title="Home">
-  <section class="section-container">
-    <IntroSection />
-    <InfoSection />
-    <GitHubSection />
-  </section>
-  <PortfolioBanner />
+  <div style="position: relative; z-index: 0">
+    <section class="section-container">
+      <IntroSection />
+      <InfoSection />
+      <GitHubSection />
+    </section>
+    <PortfolioBanner />
+  </div>
+  <Throwers />
 </Layout>

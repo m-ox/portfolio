@@ -60,8 +60,12 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
         position: "absolute",
       }}
       drag
-      dragElastic={0}
-      dragTransition={{ power: 0.05, timeConstant: 50 }}
+      dragElastic={5}
+      dragTransition={{
+        power: 0.1,
+        timeConstant: 50,
+        bounceStiffness: 10,
+      }}
       whileTap={{ scale: 1.02, rotate: Math.random() * 6 - 3 }}
     >
       <img
