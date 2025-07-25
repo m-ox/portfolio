@@ -1,1 +1,0 @@
-const t="_navbar_1k4yx_23",o="_navLink_1k4yx_33",_="_home_1k4yx_54",c="_about_1k4yx_57",n="_projects_1k4yx_60",a="_contact_1k4yx_63",s="_active_1k4yx_66",e={navbar:t,navLink:o,home:_,about:c,projects:n,contact:a,active:s};export{e as s};

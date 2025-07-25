@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://mango-pond-0f0428710.1.azurestaticapps.net/',
+  site: 'https://www.maudlinoxalis.xyz',
   base: '/',
   output: 'server',
   adapter: vercel({

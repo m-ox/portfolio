@@ -2,7 +2,7 @@
 dist/
 # generated types
 .astro/
-.vercel/
+.vercel
 
 # dependencies
 node_modules/
@@ -16,6 +16,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+node_modules/
 
 # environment variables
 .env
@@ -28,3 +29,5 @@ pnpm-debug.log*
 .idea/
 node_modules/.cache/gh-pages/
 node_modules/.cache/gh-pages/
+.vercel
+.vercel/output
