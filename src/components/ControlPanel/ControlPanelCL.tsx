@@ -11,7 +11,7 @@ const ControlPanelCL: FC = () => {
   return (
     <div className={styles.panel}>
       <div className={styles.control}>
-        <Toggle id="motion-toggle" label="Silly Mode" value={motion} onToggle={setMotion} />
+        <Toggle id="motion-toggle" label="Silly Mode (desktop only)" value={motion} onToggle={setMotion} />
       </div>
       {/* <div className={styles.control}>
         <Toggle id="theme-toggle" label="Theme" value={false} onToggle={() => {}} />
