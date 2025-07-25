@@ -41,7 +41,7 @@ const { title } = Astro.props;
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
     <Highlighter client:load />
       <ViewportWatcher client:only="react" />
-      <Nav />
+      <Nav client:load />
       <main style="flex: 1; align-self: anchor-center;">
         <slot />
       </main>
