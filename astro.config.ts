@@ -7,7 +7,10 @@ export default defineConfig({
   base: '/',
   output: 'server',
   adapter: vercel({
-    edgeMiddleware: true,
+    webAnalytics: {
+      enabled: true,
+    },
+    maxDuration: 8,
   }),
   trailingSlash: 'ignore',
   integrations: [react()],
