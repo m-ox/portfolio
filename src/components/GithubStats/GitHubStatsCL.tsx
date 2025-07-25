@@ -48,7 +48,7 @@ const GitHubStats: FC = () => {
   }, []);
 
   if (error) return (
-    <div style={{ width: isMobile ? "100%" : "35rem" }}>
+    <div style={{ height: isMobile ? "100%" : "30rem" }}>
       <img
         src="https://ghchart.rshah.org/m-ox"
         alt="GitHub Contribution Chart"
@@ -61,7 +61,11 @@ const GitHubStats: FC = () => {
     </div>
 
   )
-  if (!data) return <LoaderDots />;
+  if (!data) return (
+    <div style={{ height: isMobile ? "100%" : "30rem", width: isMobile ? "100%" : "25rem" }}>
+      <LoaderDots />
+    </div>
+  )
 
   return (
     <div style={{ width: isMobile ? "100%" : "25rem" }}>

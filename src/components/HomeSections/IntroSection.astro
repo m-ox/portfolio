@@ -1,5 +1,6 @@
 ---
 import Card from '../Card/Card.astro';
+import Throwy from '../Throwy/Throwy.astro';
 ---
 
 <div class="responsive-column">
@@ -17,11 +18,10 @@ import Card from '../Card/Card.astro';
     </p>
   </Card>
 
-  <Card>
-    <p>
-      <b>Todo:</b><br />
-      – weird fun widget zone?<br />
-      – background illustrations?<br />
-    </p>
-  </Card>
+
+  <div>
+    <Throwy item="plant"/>
+    <Throwy item="toy"/>
+    <Throwy item="glasses"/>
+  </div>
 </div>
