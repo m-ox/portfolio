@@ -27,10 +27,17 @@ export default function CardCL({ children, className = '', style = {}, title }: 
   if (!isMounted) return null;
 
   const safeStyle = typeof style === 'object' && style !== null ? style : {};
+  const resolvedStyle: React.CSSProperties = {
+    ...(!isMobile && {
+      position: 'relative',
+      zIndex: -1,
+    }),
+    ...safeStyle,
+  };
 
   if (isMobile || !motionEnabled) {
     return (
-      <div className={`${styles.card} ${className}`} style={safeStyle}>
+      <div className={`${styles.card} ${className}`} style={resolvedStyle}>
         {title && <h2>{title}</h2>}
         {children}
       </div>
@@ -46,7 +53,7 @@ export default function CardCL({ children, className = '', style = {}, title }: 
         rotateX,
         rotateY,
         willChange: 'transform',
-        ...safeStyle,
+        ...resolvedStyle,
       }}
       drag
       dragElastic={0}
@@ -54,16 +61,16 @@ export default function CardCL({ children, className = '', style = {}, title }: 
       whileTap={{ scale: 1.02, rotate: Math.random() * 6 - 3 }}
     >
       {title && (
-  <h2>
-    {title.split(/(Maud)/i).map((part, idx) => /Maud/i.test(part) ? (
-        <span key={idx} className="maudlin oxalis">{part}</span>
-      ) : (
-        <span key={idx}>{part}</span>
-      )
-    )}
-  </h2>
-)}
-
+        <h2>
+          {title.split(/(Maud)/i).map((part, idx) =>
+            /Maud/i.test(part) ? (
+              <span key={idx} className="maudlin oxalis">{part}</span>
+            ) : (
+              <span key={idx}>{part}</span>
+            )
+          )}
+        </h2>
+      )}
       {children}
     </motion.div>
   );
