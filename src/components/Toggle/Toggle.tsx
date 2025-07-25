@@ -10,7 +10,7 @@ interface ToggleProps {
 }
 
 export default function Toggle({
-  label = "Spooky Mode",
+  label,
   value,
   onToggle,
   className = "",

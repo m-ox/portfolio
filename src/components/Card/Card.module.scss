@@ -1,11 +1,11 @@
-body[data-theme='light'] {
+:root[data-theme='light'] {
   --card-bg: #ffffff;
   --card-color: #000000;
   --card-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-body[data-theme='dark'] {
+:root[data-theme='dark'] {
   --card-bg: #040404;
   --card-color: #ffffff;
   --card-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
