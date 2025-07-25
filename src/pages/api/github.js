@@ -1,4 +1,4 @@
-export async function get(context, req) {
+export async function GET() {
   const res = await fetch("https://api.github.com/user/repos", {
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -8,11 +8,10 @@ export async function get(context, req) {
 
   const data = await res.json();
 
-  return {
+  return new Response(JSON.stringify(data), {
     status: 200,
-    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json"
     }
-  };
+  });
 }
