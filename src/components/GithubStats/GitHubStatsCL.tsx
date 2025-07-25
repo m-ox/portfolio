@@ -82,7 +82,7 @@ const GitHubStats: FC = () => {
       </p>
       <p>
         <strong>Average commit length:</strong>{" "}
-        {isFinite(data.averageLength) ? `${data.averageLength} chars` : "?"} (probably too much.)
+        {isFinite(data.averageLength) ? `${data.averageLength.toFixed(1)} chars` : "?"} (probably too much.)
       </p>
 
       <h4>Awards:</h4>
