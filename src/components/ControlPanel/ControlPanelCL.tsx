@@ -7,7 +7,6 @@ const ControlPanelCL: FC = () => {
   const motion = useStore((s) => s.motion);
   const setMotion = useStore((s) => s.setMotion);
   const isMobile = useStore((s) => s.isMobile);
-  console.log('Control Panel isMobile?', isMobile);
 
   return (
     <div className={styles.panel}>
