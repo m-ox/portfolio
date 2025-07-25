@@ -1,6 +1,8 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 type AppState = {
+  isMobile: boolean;
+  setIsMobile: (val: boolean) => void;
   goffMode: boolean;
   setGoffMode: (val: boolean) => void;
   motion: boolean;
@@ -8,6 +10,8 @@ type AppState = {
 };
 
 export const useStore = create<AppState>((set) => ({
+  isMobile: false,
+  setIsMobile: (val) => set({ isMobile: val }),
   goffMode: false,
   setGoffMode: (val) => set({ goffMode: val }),
   motion: true,

@@ -35,17 +35,30 @@ import ControlPanel from '../components/ControlPanel/ControlPanel.astro';
 
   </style>
   <section class="section-container">
-    <Card class="intro" title="Hi, I’m Maud.">
-      <p>
-        Building tools with code, making messes with paint.<br />
-        Somewhere between structured logic and creative residue.<br />
-        <br />
-        <b>App Todo:</b><br />
-        - implement state to turn off draggable cards<br />
-        - weird fun widget zone?<br />
-        - background illustrations?<br />
-      </p>
-    </Card>
+    <div class="responsive-column">
+      <Card class="intro" title="Hi, I’m Maud.">
+        <p>
+          Building tools with code, making messes with paint.<br />
+          Somewhere between structured logic and creative residue.<br />
+          <br />
+        </p>
+      </Card>
+
+      <Card>
+        <p class="quote">
+          "I am a mess, but I am a beautiful mess." - <a href="https://www.goodreads.com/quotes/1000000-i-am-a-mess-but-i-am-a-beautiful-mess" target="_blank" rel="noopener noreferrer">Unknown</a>
+        </p>
+      </Card>
+
+      <Card>
+        <p>
+          <b>App Todo:</b><br />
+          - implement state to turn off draggable cards<br />
+          - weird fun widget zone?<br />
+          - background illustrations?<br />
+        </p>
+      </Card>
+    </div>
 
     <div class="responsive-column">
       <Card title="Resume" style="height: fit-content;">

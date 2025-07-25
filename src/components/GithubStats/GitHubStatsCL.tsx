@@ -9,6 +9,7 @@ import type {
 } from "react";
 import { awards } from "../../utils/awards";
 import LoaderDots from "../LoaderDots/LoaderDots";
+import { useStore } from "../../store/store";
 
 type GitHubStatsResponse = {
   totalCommits: number;
@@ -26,14 +27,7 @@ const GitHubStats: FC = () => {
   const [data, setData] = useState<GitHubStatsResponse | null>(null);
   const [onGitHubPages, setOnGitHubPages] = useState(false);
   const [error, setError] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const isMobile = useStore((s) => s.isMobile);
 
   useEffect(() => {
     const onGitHub = window.location.hostname.includes("github.io");

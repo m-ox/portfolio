@@ -19,7 +19,6 @@ export default function Toggle({
   const handleClicky = () => {
     onToggle?.(!value);
   }
-  console.log('label:', label, 'value? ', value);
 
   return (
     <button

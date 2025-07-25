@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import styles from './Card.module.scss';
+import { useStore } from '../../store/store';
 
 interface Props {
   children: ReactNode;
@@ -10,27 +11,24 @@ interface Props {
 }
 
 export default function CardCL({ children, className = '', style = {}, title }: Props) {
+  const motionEnabled = useStore((s) => s.motion);
+  const isMobile = useStore((s) => s.isMobile);
   const [isMounted, setIsMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [8, -8]);
   const rotateY = useTransform(x, [-100, 100], [-8, 8]);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    setIsMounted(true);
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   if (!isMounted) return null;
 
   const safeStyle = typeof style === 'object' && style !== null ? style : {};
 
-  if (isMobile) {
+  if (isMobile || !motionEnabled) {
     return (
       <div className={`${styles.card} ${className}`} style={safeStyle}>
         {title && <h2>{title}</h2>}
