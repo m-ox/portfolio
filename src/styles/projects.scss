@@ -1,7 +1,32 @@
 @use "sass:list";
 
+:root[data-theme='light'] {
+  --bg: #e6fff5;
+  --fg: #000000;
+  --card-bg: #ffffff;
+  --card-color: #000000;
+  --card-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --link-color: #1dbf73;
+  --soon-bg: #665a60;
+  --soon-after-bg: #0a2a90;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0c0c0c;
+  --fg: #f0f0f0;
+  --card-bg: #1a1a1a;
+  --card-color: #ffffff;
+  --card-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+  --card-shadow-hover: 0 4px 16px rgba(255, 255, 255, 0.12);
+  --link-color: #90ee90;
+  --soon-bg: #333;
+  --soon-after-bg: #0044aa;
+}
+
 body {
-  background: #e6fff5;
+  background: var(--bg);
+  color: var(--fg);
 }
 
 p {
@@ -22,19 +47,20 @@ p {
 }
 
 .project-card {
-  background: white;
+  background: var(--card-bg);
+  color: var(--card-color);
   padding: 1.5rem;
   display: flex;
   gap: 1rem;
   flex-direction: column;
   border-radius: 4px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--card-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: fadeInUp 0.5s ease-out both;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--card-shadow-hover);
   }
 
   h2 {
@@ -48,7 +74,7 @@ p {
   }
 
   a {
-    color: #1dbf73;
+    color: var(--link-color);
     font-weight: bold;
   }
 }
@@ -75,6 +101,8 @@ p {
   position: relative;
   opacity: 0.5;
   pointer-events: none;
+  background: var(--soon-bg);
+  mix-blend-mode: difference;
 
   &::after {
     content: "Coming Soon";
@@ -82,7 +110,7 @@ p {
     top: 1rem;
     left: -3.5rem;
     transform: rotate(-45deg);
-    background: #ff82b6;
+    background: var(--soon-after-bg);
     color: white;
     font-weight: bold;
     padding: 0.25rem 2rem;
@@ -90,43 +118,5 @@ p {
     border: 1px solid #ddd;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     z-index: 10;
-  }
-}
-
-.project-card.coming-soon {
-  background: #665a60;
-  mix-blend-mode: difference;
-
-  &::after {
-    background: #0a2a90;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0c0c0c;
-    color: #f0f0f0;
-  }
-
-  .project-card {
-    background: #1a1a1a;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
-
-    &:hover {
-      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.12);
-    }
-
-    a {
-      color: #90ee90;
-    }
-  }
-
-  .project-card.coming-soon {
-    background: #333;
-    mix-blend-mode: normal;
-
-    &::after {
-      background: #0044aa;
-    }
   }
 }

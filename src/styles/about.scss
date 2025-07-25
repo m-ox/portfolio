@@ -1,12 +1,23 @@
 @use "sass:list";
+@use "sass:color";
+
+:root[data-theme='light'] {
+  --bg1: #fff0f5;
+  --bg2: #ffffff;
+  --fg: #222;
+  --border: #ccc;
+}
+
+:root[data-theme='dark'] {
+  --bg1: #1a1a1a;
+  --bg2: #2a2a2a;
+  --fg: #e0e0e0;
+  --border: #444;
+}
 
 body {
-  background: linear-gradient(to bottom, #fff0f5, #ffffff);
-
-  @media (prefers-color-scheme: dark) {
-    background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
-    color: #e0e0e0;
-  }
+  background: linear-gradient(to bottom, var(--bg1), var(--bg2));
+  color: var(--fg);
 }
 
 .about-container {
@@ -35,10 +46,7 @@ body {
     height: 18rem;
     border-radius: 50%;
     object-fit: cover;
-
-    @media (prefers-color-scheme: dark) {
-      border: 2px solid #444;
-    }
+    border: 2px solid var(--border);
   }
 
   .about-text {
@@ -61,10 +69,7 @@ body {
 
 .about-summary {
   line-height: 1.8rem;
-
-  @media (prefers-color-scheme: dark) {
-    color: #dcdcdc;
-  }
+  color: var(--fg);
 }
 
 $highlight-pinks: (
@@ -81,8 +86,9 @@ $highlight-pinks: (
     color: list.nth($highlight-pinks, $i);
     font-weight: bold;
 
-    @media (prefers-color-scheme: dark) {
-      color: lighten(list.nth($highlight-pinks, $i), 15%);
+    [data-theme='dark'] & {
+      color: color.adjust(list.nth($highlight-pinks, $i), $lightness: 15%);
     }
   }
 }
+

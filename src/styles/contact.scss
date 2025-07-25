@@ -1,6 +1,22 @@
+:root[data-theme='light'] {
+  --bg-gradient: linear-gradient(to bottom, #f0f8ff, #c3dbf2);
+  --fg: #000;
+  --social-link: #0077cc;
+  --social-hover: underline;
+  --contact-bg: transparent;
+}
+
+:root[data-theme='dark'] {
+  --bg-gradient: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+  --fg: #e0e0e0;
+  --social-link: #66aaff;
+  --social-hover: underline;
+  --contact-bg: #222;
+}
+
 body {
-  background: linear-gradient(to bottom, #f0f8ff, #c3dbf2);
-  color: #000;
+  background: var(--bg-gradient);
+  color: var(--fg);
 }
 
 .contact-wrapper {
@@ -10,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  background-color: var(--contact-bg);
 }
 
 .contact-socials {
@@ -19,27 +36,11 @@ body {
 
   a {
     text-decoration: none;
-    color: #0077cc;
+    color: var(--social-link);
     font-weight: bold;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: var(--social-hover);
     }
-  }
-}
-
-// DARK MODE OVERRIDES
-@media (prefers-color-scheme: dark) {
-  body {
-    background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
-    color: #e0e0e0;
-  }
-
-  .contact-wrapper {
-    background-color: #222;
-  }
-
-  .contact-socials a {
-    color: #66aaff;
   }
 }
