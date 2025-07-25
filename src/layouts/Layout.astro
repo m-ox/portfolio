@@ -8,10 +8,10 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-  <script>
-    document.body.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
-  </script>
   <head>
+    <script>
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+    </script>
     <!-- Meta Tags -->
     <meta name="description" content="Portfolio of m-ox" />
     <meta charset="UTF-8" />
