@@ -11,6 +11,7 @@ const { title } = Astro.props;
   <script>
     document.body.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
   </script>
+  <script type="module" client:only="astro/view-transitions" />
   <head>
     <!-- Meta Tags -->
     <meta name="description" content="Portfolio of m-ox" />

@@ -22,6 +22,7 @@ export default function NavCL({ currentPath }: Props) {
           <a
             key={path}
             href={path}
+            data-astro-transition
             className={`${styles.navLink} ${style} ${isActive ? styles.active : ''}`}
             aria-disabled={isActive}
             tabIndex={isActive ? -1 : undefined}
