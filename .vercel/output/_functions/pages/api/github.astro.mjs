@@ -1,5 +1,7 @@
-export const prerender = false;
-export async function GET() {
+export { renderers } from '../../renderers.mjs';
+
+const prerender = false;
+async function GET() {
   const res = await fetch("https://api.github.com/user/repos", {
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -16,3 +18,13 @@ export async function GET() {
     }
   });
 }
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  GET,
+  prerender
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

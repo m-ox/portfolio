@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@astrojs/vercel": "^8.2.3",
     "@emailjs/browser": "^4.4.1",
     "astro": "^5.12.3",
     "framer-motion": "^12.23.7",

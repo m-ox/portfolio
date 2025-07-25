@@ -1,0 +1,1 @@
+const o="_throwy_xygkk_1",c={throwy:o},s="_panel_em9h3_1",e="_control_em9h3_10",f={panel:s,control:e},t="_toggle_feers_1",_="_label_feers_12",l="_slider_feers_18",n="_on_feers_38",r="_off_feers_45",a={toggle:t,label:_,slider:l,on:n,off:r};export{a,f as b,c as s};
