@@ -1,98 +1,32 @@
 ---
+import '../styles/contact.scss';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Card from '../components/Card/Card.astro';
 import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
+import EmailForm from '../components/EmailForm/EmailForm.tsx';
 ---
 
 <Layout title="Contact Me">
-  <style lang="scss">
-    body {
-      background: linear-gradient(to bottom, #f0f8ff, #c3dbf2);
-    }
 
-    .contact-section {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-wrapper {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .contact-socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-
-      a {
-        text-decoration: none;
-        color: #0077cc;
-        font-weight: bold;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
-  </style>
-
-  <section class="contact-section">
+  <section class="section-container">
     <Card title="Let's Connect">
-      <p style="text-align: center; width: 400px; margin: 0 auto 2rem;">
+      <p style="text-align: center; margin: 0 auto 2rem;">
         Questions, ideas, compliments, confessions?<br />
         Drop me a note below.
       </p>
-      <form id="contact-form" onsubmit="sendEmail(event)">
-        <label style="display: block; margin-bottom: 1rem;">
-          <span>Name</span><br />
-          <input type="text" name="name" required style="width: 100%; padding: 0.5rem;" />
-        </label>
-
-        <label style="display: block; margin-bottom: 1rem;">
-          <span>Email</span><br />
-          <input type="email" name="email" required style="width: 100%; padding: 0.5rem;" />
-        </label>
-
-        <label style="display: block; margin-bottom: 1rem;">
-          <span>Message</span><br />
-          <textarea name="message" rows="5" required style="width: 100%; padding: 0.5rem;"></textarea>
-        </label>
-
-        <button style="background: #68b9ff; color: white;" type="submit">
-          Send
-        </button>
-      </form>
+      <EmailForm client:load />
     </Card>
 
     <Card>
       <h2>FAQ</h2>
-
       <div>
-        <!-- I am super hungry so leaving this like this for now -->
-        <b>Q: Why reach out?</b>
-        <br/>
-        A: I ship clean, reliable code and work across the stack. No babysitting required.
-        <br/>
-        <br/>
-        <b>Q: What do you offer?</b>
-        <br/>        
-        A: Real-world experience, fast ramp-up, clear comms, and stable delivery under pressure.
-        <br/>
-        <br/>
-        <b>Q: Job hunting?</b>
-        <br/>   
-        A: Yes. Remote preferred. Contract or full-time. Serious teams only.
-        <br/>
-        <br/>
-        <b>Q: Leadership?</b>
-        <br/>   
+        <b>Q: Why reach out?</b><br/>
+        A: I ship clean, reliable code and work across the stack. No babysitting required.<br/><br/>
+        <b>Q: What do you offer?</b><br/>
+        A: Real-world experience, fast ramp-up, clear comms, and stable delivery under pressure.<br/><br/>
+        <b>Q: Job hunting?</b><br/>
+        A: Yes. Remote preferred. Contract or full-time. Serious teams only.<br/><br/>
+        <b>Q: Leadership?</b><br/>
         A: I’ve led features and mentored devs. I keep things moving.
       </div>
 
@@ -114,6 +48,5 @@ import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
     <Card title="Random Skunk Wisdom">
       <RandomQuote />
     </Card>
-
   </section>
 </Layout>

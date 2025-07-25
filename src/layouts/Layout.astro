@@ -1,27 +1,52 @@
 ---
-import Nav from '../components/Nav.astro';
+import Highlighter from '../components/Highlighter';
+import Nav from '../components/Nav/Nav.astro';
+import ViewportWatcher from '../components/ViewportWatcher';
 import '../styles/global.scss';
 const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
+  <script>
+    document.body.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+  </script>
   <head>
+    <!-- Meta Tags -->
+    <meta name="description" content="Portfolio of m-ox" />
     <meta charset="UTF-8" />
-    <title>{title}</title>
+    <title>m-ox | {title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="m-ox | Home" />
+    <meta property="og:description" content="Portfolio of m-ox" />
+    <meta property="og:url" content="https://m-ox.github.io/portfolio/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://m-ox.github.io/portfolio/cutiepreview.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="m-ox | Portfolio" />
+    <meta name="twitter:description" content="The personal portfolio of m-ox, software engineer and digital mischief-maker." />
+    <meta name="twitter:image" content="https://m-ox.github.io/portfolio/cutiepreview.png" />
+
   </head>
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
-    <Nav />
-    <main style="flex: 1; padding: 2rem; align-self: anchor-center;">
-      <slot />
-    </main>
-    <footer style="padding: 1rem; text-align: center; font-size: .9rem; color: #666;">
-      Created using Astro JS with &#10084;&#65039; by <a href="https://github.com/m-ox" target="_blank" rel="noopener noreferrer">m-ox</a>
-    </footer>
+    <Highlighter client:load />
+      <ViewportWatcher client:only="react" />
+      <Nav />
+      <main style="flex: 1; align-self: anchor-center;">
+        <slot />
+      </main>
+      <footer style="padding: 1rem; text-align: center; font-size: .9rem;">
+        Created using Astro JS with &#10084;&#65039; by <a class="maudlin oxalis" href="https://github.com/m-ox" target="_blank" rel="noopener noreferrer">m-ox</a>
+      </footer>
   </body>
 </html>

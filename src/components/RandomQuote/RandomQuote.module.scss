@@ -1,6 +1,19 @@
+:root[data-theme='light'] {
+  --quote-color: #555;
+}
+
+:root[data-theme='dark'] {
+  --quote-color: #ccc;
+}
+
 .contactQuote {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 0;
-    place-self: center;
+  font-style: italic;
+  color: var(--quote-color);
+  min-width: 200px;
+  place-self: center;
+
+  @media (min-width: 768px) {
+    width: 50rem;
+    text-align: center;
+  }
 }

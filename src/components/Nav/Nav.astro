@@ -1,0 +1,6 @@
+---
+import NavCL from './NavCL.tsx';
+const currentPath = Astro.url.pathname;
+---
+
+<NavCL currentPath={currentPath} client:load />

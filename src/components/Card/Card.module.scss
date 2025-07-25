@@ -1,0 +1,37 @@
+:root[data-theme='light'] {
+  --card-bg: #ffffff;
+  --card-color: #000000;
+  --card-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme='dark'] {
+  --card-bg: #292828;
+  --card-color: #ffffff;
+  --card-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  --card-shadow-hover: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+.card {
+  height: fit-content;
+  flex-grow: 1;
+  border-radius: 4px;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  color: var(--card-color);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+  position: relative;
+  z-index: 1 !important;
+  pointer-events: auto;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  &.no-padding {
+    padding: 0;
+  }
+}
