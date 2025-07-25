@@ -1,82 +1,11 @@
 ---
+import '../styles/about.scss';
 import Card from '../components/Card/Card.astro';
 import Tag from '../components/Tag.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="About Me">
-  <style lang="scss">
-    @use "sass:list";
-    body {
-      background: linear-gradient(to bottom, #fff0f5, #ffffff);
-    }
-
-    .about-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.6s ease-out 0.1s forwards;
-
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-
-      @media (min-width: 768px) {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-
-      img {
-        width: 18rem;
-        height: 18rem;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-
-      .about-text {
-        // max-width: 600px;
-      }
-    }
-
-    .about-flex {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      text-align: center;
-
-      @media (min-width: 768px) {
-        flex-direction: row;
-        text-align: left;
-      }
-    }
-
-    .about-summary {
-      line-height: 1.8rem;
-    }
-
-    $highlight-pinks: (
-      #e91e63,
-      #f06292,
-      #ec407a,
-      #f48fb1,
-      #ff80ab,
-      #ff4081
-    );
-
-    @for $i from 1 through list.length($highlight-pinks) {
-      .hl-#{$i} {
-        color: list.nth($highlight-pinks, $i);
-        font-weight: bold;
-      }
-    }
-  </style>
 
   <section class="section-container">
     <Card title="About Me">

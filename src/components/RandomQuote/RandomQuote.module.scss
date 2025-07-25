@@ -9,4 +9,8 @@
       width: 50rem;
       text-align: center;
     }
+
+    @media (prefers-color-scheme: dark) {
+    color: #ccc;
+  }
 }

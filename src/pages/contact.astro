@@ -1,4 +1,5 @@
 ---
+import '../styles/contact.scss';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card/Card.astro';
 import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
@@ -6,36 +7,6 @@ import EmailForm from '../components/EmailForm/EmailForm.tsx';
 ---
 
 <Layout title="Contact Me">
-  <style lang="scss">
-    body {
-      background: linear-gradient(to bottom, #f0f8ff, #c3dbf2);
-    }
-
-    .contact-wrapper {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .contact-socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-
-      a {
-        text-decoration: none;
-        color: #0077cc;
-        font-weight: bold;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  </style>
 
   <section class="section-container">
     <Card title="Let's Connect">

@@ -1,0 +1,45 @@
+:root[data-theme='light'] {
+  --bg1: #e6e6e7;
+  --bg2: #ccc2d7;
+  --fg: #222;
+}
+
+:root[data-theme='dark'] {
+  --bg1: #1a1a1a;
+  --bg2: #2a2a33;
+  --fg: #e0e0e0;
+}
+
+body {
+  background: linear-gradient(to bottom, var(--bg1), var(--bg2));
+  color: var(--fg);
+}
+
+
+.intro {
+  flex-basis: auto;
+  flex-grow: 50;
+}
+
+.quote {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+  color: inherit;
+
+  body[data-theme='dark'] & {
+    opacity: 0.8;
+    color: #ccc;
+  }
+}
+
+.responsive-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}

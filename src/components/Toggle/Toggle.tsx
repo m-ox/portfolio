@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback } from "react";
 import styles from './Toggle.module.scss';
 
 interface ToggleProps {
@@ -10,25 +10,24 @@ interface ToggleProps {
 }
 
 export default function Toggle({
-  label,
+  label = "Spooky Mode",
   value,
   onToggle,
   className = "",
 }: ToggleProps) {
 
-  const handleClicky = () => {
-    console.log('click')
+  const handleClick = useCallback(() => {
     onToggle?.(!value);
-  }
+  }, [value, onToggle]);
 
   return (
     <button
       type="button"
-      onClick={handleClicky}
+      onClick={handleClick}
       aria-pressed={value}
       className={`${styles.toggle} ${value ? styles.on : styles.off} ${className}`}
     >
-      {label && <span className={styles.label}>{label}</span>}
+      <span className={styles.label}>{label}</span>
       <span className={styles.slider} />
     </button>
   );

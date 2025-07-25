@@ -1,0 +1,81 @@
+:root[data-theme='light'] {
+  --nav-bg: #eee;
+  --nav-shadow: #9560d38f;
+  --nav-link: #444;
+  --nav-hover-home: #a084ca;
+  --nav-hover-about: #ff69b4;
+  --nav-hover-projects: #4caf50;
+  --nav-hover-contact: #2196f3;
+  --nav-active-opacity: 0.6;
+}
+
+:root[data-theme='dark'] {
+  --nav-bg: #16151c;
+  --nav-shadow: #5e40b1aa;
+  --nav-link: #ddd;
+  --nav-hover-home: #d3b5ff;
+  --nav-hover-about: #ffb3de;
+  --nav-hover-projects: #a5d6a7;
+  --nav-hover-contact: #90caf9;
+  --nav-active-opacity: 0.5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: var(--nav-bg);
+  font-family: 'IBM Plex Sans', sans-serif;
+  box-shadow: 0 0px 17px var(--nav-shadow);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--nav-link);
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 0%;
+    transition: width 0.3s ease;
+    background-color: currentColor;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &.home:hover {
+    color: var(--nav-hover-home);
+  }
+
+  &.about:hover {
+    color: var(--nav-hover-about);
+  }
+
+  &.projects:hover {
+    color: var(--nav-hover-projects);
+  }
+
+  &.contact:hover {
+    color: var(--nav-hover-contact);
+  }
+
+  &.active {
+    pointer-events: none;
+    opacity: var(--nav-active-opacity);
+    cursor: default;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
