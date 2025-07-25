@@ -6,19 +6,17 @@ interface Props {
 
 export default function NavCL({ currentPath }: Props) {
   const links = [
-    { path: '/portfolio', label: 'Home', style: styles.home },
-    { path: '/portfolio/about', label: 'About', style: styles.about },
-    { path: '/portfolio/projects', label: 'Projects', style: styles.projects },
-    { path: '/portfolio/contact', label: 'Contact', style: styles.contact },
+    { path: '/', label: 'Home', style: styles.home },
+    { path: '/about', label: 'About', style: styles.about },
+    { path: '/projects', label: 'Projects', style: styles.projects },
+    { path: '/contact', label: 'Contact', style: styles.contact },
   ];
 
   return (
     <nav className={styles.navbar}>
       {links.map(({ path, label, style }) => {
-        const isActive =
-          currentPath === path ||
-          currentPath === path + '/' ||
-          currentPath + '/' === path;
+        const normalize = (s: string) => s.replace(/\/+$/, '') || '/';
+        const isActive = normalize(currentPath) === normalize(path);
         
         return (
           <a
