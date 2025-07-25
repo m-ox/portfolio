@@ -1,18 +1,29 @@
-export const prerender = false;
 export async function GET() {
-  const res = await fetch("https://api.github.com/user/repos", {
-    headers: {
-      Authorization: `token ${process.env.GITHUB_TOKEN}`,
-      "User-Agent": "astro-app"
-    }
-  });
+  try {
+    const res = await fetch("https://api.github.com/user/repos", {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_TOKEN}`,
+        "User-Agent": "astro-app",
+      },
+    });
 
-  const data = await res.json();
-
-  return new Response(JSON.stringify(data), {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json"
+    if (!res.ok) {
+      return new Response(JSON.stringify({ error: 'GitHub API error', status: res.status }), {
+        status: res.status,
+        headers: { "Content-Type": "application/json" },
+      });
     }
-  });
+
+    const data = await res.json();
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: e.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
