@@ -12,8 +12,6 @@ export default function NavCL({ currentPath }: Props) {
     { path: '/portfolio/contact', label: 'Contact', style: styles.contact },
   ];
 
-  console.log('currentPath', currentPath);
-
   return (
     <nav className={styles.navbar}>
       {links.map(({ path, label, style }) => {
@@ -22,7 +20,6 @@ export default function NavCL({ currentPath }: Props) {
           currentPath === path + '/' ||
           currentPath + '/' === path;
         
-          console.log('className: ', `${styles.navLink} ${style} ${isActive ? styles.active : ''}`)
         return (
           <a
             key={path}
