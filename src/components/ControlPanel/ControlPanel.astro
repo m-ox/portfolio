@@ -1,0 +1,8 @@
+---
+import ControlPanelCL from './ControlPanelCL.tsx';
+const { title = '' } = Astro.props;
+---
+
+<ControlPanelCL client:load>
+  <slot />
+</ControlPanelCL>

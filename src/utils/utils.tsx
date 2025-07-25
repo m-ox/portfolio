@@ -18,8 +18,6 @@ async function getGitHubStats() {
     0
   );
 
-  console.log(`Total repos: ${repos.length}, Stars: ${totalStars}, Forks: ${totalForks}`);
-
   return { totalRepos: repos.length, totalStars, totalForks };
 }
 
