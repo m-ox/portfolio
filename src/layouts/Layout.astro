@@ -10,8 +10,13 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <script>
-      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+      (() => {
+        const theme = localStorage.getItem('theme')
+          || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
     </script>
+
     <!-- Meta Tags -->
     <meta charset="UTF-8" />
     <title>m-ox | {title || 'Dev Portfolio'}</title>
