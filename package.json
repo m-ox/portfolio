@@ -12,6 +12,7 @@
     "@astrojs/react": "^4.3.0",
     "@astrojs/vercel": "^8.0.4",
     "@emailjs/browser": "^4.4.1",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^5.12.3",
     "dotenv": "^17.2.1",
     "emailjs": "^4.0.3",
