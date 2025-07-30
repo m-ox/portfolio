@@ -14,7 +14,10 @@ export default function NavCL({ currentPath }: Props) {
 
   return (
     <nav className={styles.navbar}>
-      <p>m-ox</p>
+      {/* <div style={{ display: "inline-flex", alignItems: "center", gap: ".5rem", position: "fixed", left: 0, paddingLeft: "2rem" }}>
+        <p>m-ox</p>
+        <img src="/throwers/marble.png" style={{ width: '25px', height: '25px' }} />
+      </div> */}
       {links.map(({ path, label, style }) => {
         const normalize = (s: string) => s.replace(/\/+$/, '') || '/';
         const isActive = normalize(currentPath) === normalize(path);
