@@ -74,8 +74,6 @@ export async function GET() {
       totalForks,
     };
 
-    console.log('stats: ', stats)
-
     return new Response(JSON.stringify(stats), {
       status: 200,
       headers: { "Content-Type": "application/json" },
