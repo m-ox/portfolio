@@ -10,13 +10,15 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
-    "@astrojs/vercel": "^8.2.3",
+    "@astrojs/vercel": "^8.0.4",
     "@emailjs/browser": "^4.4.1",
     "astro": "^5.12.3",
+    "dotenv": "^17.2.1",
     "emailjs": "^4.0.3",
     "framer-motion": "^12.23.9",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "real-dev-hours": "^1.0.3",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

@@ -1,7 +1,12 @@
 export const prerender = false;
+
+if (process.env.NODE_ENV !== 'production') {
+  import('dotenv').then(dotenv => dotenv.config());
+}
+
 export async function GET() {
   try {
-    const res = await fetch("https://api.github.com/user/repos", {
+    const res = await fetch("https://api.github.com/user/repos?per_page=100", {
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
         "User-Agent": "astro-app",
@@ -16,6 +21,7 @@ export async function GET() {
     }
 
     const repos = await res.json();
+    // console.log(repos.map(r => ({ name: r.name, stars: r.stargazers_count })));
 
     // Preprocessing
     const totalRepos = repos.length;
