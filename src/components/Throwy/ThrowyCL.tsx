@@ -14,6 +14,7 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
   const motionEnabled = useStore((s) => s.motion);
   const isMobile = useStore((s) => s.isMobile);
   const [isMounted, setIsMounted] = useState(false);
+  const [isGrabbing, setIsGrabbing] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -33,6 +34,7 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
     styles.throwy,
     className,
     !isMobile ? item : `mobile ${item}`,
+    isGrabbing ? styles.grabbing : styles.grab
   ].filter(Boolean).join(" ");
 
   if (isMobile || !motionEnabled) {
@@ -67,7 +69,10 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
         timeConstant: 50,
         bounceStiffness: 10,
       }}
-      whileTap={{ scale: 1.02, rotate: Math.random() * 6 - 3 }}
+      whileTap={{ scale: 1.005, rotate: Math.random() * 6 - 3 }}
+      onMouseDown={() => setIsGrabbing(true)}
+      onMouseUp={() => setIsGrabbing(false)}
+      onMouseLeave={() => setIsGrabbing(false)}
     >
       <img
         src={src}

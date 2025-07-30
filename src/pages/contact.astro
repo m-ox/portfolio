@@ -3,7 +3,7 @@ import '../styles/contact.scss';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card/Card.astro';
 import RandomQuote from '../components/RandomQuote/RandomQuote.astro';
-import EmailForm from '../components/EmailForm/EmailForm.tsx';
+import EmailForm from '../components/EmailForm/EmailForm';
 ---
 
 <Layout title="Contact Me">
@@ -12,7 +12,9 @@ import EmailForm from '../components/EmailForm/EmailForm.tsx';
     <Card title="Let's Connect">
       <p style="text-align: center; margin: 0 auto 2rem;">
         Questions, ideas, compliments, confessions?<br />
-        Drop me a note below.
+        Drop me a note below or directly
+        <a href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#109;&#097;&#117;&#100;&#108;&#105;&#110;&#111;&#120;&#097;&#108;&#105;&#115;&#046;&#120;&#121;&#122;">email me</a>.
+
       </p>
       <EmailForm client:load />
     </Card>
