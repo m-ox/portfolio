@@ -2,19 +2,24 @@
   --bg1: #e6e6e7;
   --bg2: #ccc2d7;
   --fg: #222;
+  --quote-color: #555;
+  --link-color: #555;
+  --link-hover: #000;
 }
 
 :root[data-theme='dark'] {
   --bg1: #1a1a1a;
   --bg2: #2a2a33;
   --fg: #e0e0e0;
+  --quote-color: #ccc;
+  --link-color: #ccc;
+  --link-hover: #fff;
 }
 
 body {
   background: linear-gradient(to bottom, var(--bg1), var(--bg2));
   color: var(--fg);
 }
-
 
 .intro {
   flex-basis: auto;
@@ -24,13 +29,8 @@ body {
 .quote {
   text-align: center;
   font-style: italic;
-  opacity: 0.7;
-  color: inherit;
-
-  body[data-theme='dark'] & {
-    opacity: 0.8;
-    color: #ccc;
-  }
+  opacity: 0.8;
+  color: var(--quote-color);
 }
 
 .responsive-column {
@@ -41,5 +41,25 @@ body {
 
   @media (max-width: 768px) {
     width: 100%;
+  }
+}
+
+.share-links {
+  position: absolute;
+  bottom: 2rem;
+  left: 33%;
+
+  a {
+    text-decoration: none !important;
+
+    svg {
+      margin: 0 0.5rem;
+      color: var(--link-color);
+      transition: color 0.2s;
+    }
+
+    &:hover svg {
+      color: var(--link-hover);
+    }
   }
 }
