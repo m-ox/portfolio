@@ -40,6 +40,7 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
       <img
         src={src}
         alt={alt}
+        loading="lazy"
         className={combinedClassName}
         style={resolvedStyle}
         draggable={false}
@@ -71,6 +72,7 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
       <img
         src={src}
         alt={alt}
+        loading="lazy"
         className={combinedClassName}
         style={resolvedStyle}
         draggable={false}

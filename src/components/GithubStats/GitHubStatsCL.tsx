@@ -56,6 +56,7 @@ const GitHubStats: FC = () => {
         <img
           src="https://ghchart.rshah.org/m-ox"
           alt="GitHub Contribution Chart"
+          loading="lazy"
           style={{ width: "100%", maxWidth: "100%", marginBottom: "1rem" }}
         />
       </div>
