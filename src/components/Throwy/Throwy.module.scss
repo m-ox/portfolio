@@ -8,6 +8,14 @@
   will-change: transform;
 }
 
+.grab {
+  cursor: grab;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
 :global(.marble) {
   transform: translate(337.39px) translateY(-825.212px) rotateX(8deg) rotateY(8deg);
   position: absolute;
