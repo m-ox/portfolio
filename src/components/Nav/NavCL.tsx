@@ -14,6 +14,7 @@ export default function NavCL({ currentPath }: Props) {
 
   return (
     <nav className={styles.navbar}>
+      <p>m-ox</p>
       {links.map(({ path, label, style }) => {
         const normalize = (s: string) => s.replace(/\/+$/, '') || '/';
         const isActive = normalize(currentPath) === normalize(path);
