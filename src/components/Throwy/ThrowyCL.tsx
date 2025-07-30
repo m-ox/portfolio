@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useStore } from "../../store/store";
 import styles from "./Throwy.module.scss";
+// import { enableRealDevHours } from "real-dev-hours";
+// enableRealDevHours();
 
 interface Props {
   item: string;
@@ -15,6 +17,7 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
   const isMobile = useStore((s) => s.isMobile);
   const [isMounted, setIsMounted] = useState(false);
   const [isGrabbing, setIsGrabbing] = useState(false);
+  
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
