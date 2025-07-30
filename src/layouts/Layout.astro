@@ -13,10 +13,12 @@ const { title } = Astro.props;
       document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
     </script>
     <!-- Meta Tags -->
-    <meta name="description" content="Portfolio of m-ox" />
     <meta charset="UTF-8" />
-    <title>m-ox | {title}</title>
+    <title>m-ox | {title || 'Dev Portfolio'}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of Maud Nordby, a full stack developer specializing in React, Node.js, PostgreSQL, and building accessible, modern web applications.">
+    <link rel="canonical" href="https://www.maudlinoxalis.xyz/" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,12 +32,29 @@ const { title } = Astro.props;
     <meta property="og:url" content="https://www.maudlinoxalis.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://www.maudlinoxalis.xyz/cutiepreview.png" />
+    <link rel="preload" as="image" href="/cutiepreview.png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="m-ox | Portfolio" />
     <meta name="twitter:description" content="The personal portfolio of m-ox, software engineer and digital mischief-maker." />
     <meta name="twitter:image" content="https://www.maudlinoxalis.xyz/cutiepreview.png" />
+
+    <!-- Schema -->
+     <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Maud Nordby",
+        "url": "https://www.maudlinoxalis.xyz/",
+        "jobTitle": "Full Stack Developer",
+        "sameAs": [
+          "https://github.com/m-ox",
+          "https://www.linkedin.com/in/lena-nordby-47762511a"
+        ]
+      }
+      </script>
+
 
   </head>
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
