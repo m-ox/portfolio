@@ -92,7 +92,7 @@ const GitHubStats: FC = () => {
       ))}
 
       <h4>Longest commit message:</h4>
-      <pre style={{ whiteSpace: "pre-wrap", fontSize: "0.85rem" }}>
+      <pre style={{ whiteSpace: "pre-wrap", fontSize: "0.85rem", height: "6rem", overflow: "auto" }}>
         <i>"{data.longestMessage}"</i>
       </pre>
     </div>
