@@ -9,17 +9,17 @@ import EmailForm from '../components/EmailForm/EmailForm';
 <Layout title="Contact Me">
 
   <section class="section-container">
-    <Card title="Let's Connect">
+    <Card cardIndex={7} title="Let's Connect">
       <p style="text-align: center; margin: 0 auto 2rem;">
         Questions, ideas, compliments, confessions?<br />
         Drop me a note below or directly
         <a href="mailto:&#099;&#111;&#110;&#116;&#097;&#099;&#116;&#064;&#109;&#097;&#117;&#100;&#108;&#105;&#110;&#111;&#120;&#097;&#108;&#105;&#115;&#046;&#120;&#121;&#122;">email me</a>.
 
       </p>
-      <EmailForm client:load />
+      <EmailForm client:idle />
     </Card>
 
-    <Card>
+    <Card cardIndex={2}>
       <h2>FAQ</h2>
       <div>
         <b>Q: Why reach out?</b><br/>
@@ -47,8 +47,8 @@ import EmailForm from '../components/EmailForm/EmailForm';
       </div>
     </Card>
 
-    <Card title="Random Skunk Wisdom">
-      <RandomQuote />
+    <Card cardIndex={7} title="Random Skunk Wisdom">
+      <RandomQuote client:visible />
     </Card>
   </section>
 </Layout>

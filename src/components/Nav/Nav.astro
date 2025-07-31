@@ -1,6 +1,32 @@
 ---
-import NavCL from './NavCL.tsx';
-const currentPath = Astro.url.pathname;
+import styles from './Nav.module.scss';
+const { currentPath } = Astro.props;
+
+const links = [
+  { path: '/', label: 'Home', style: styles.home },
+  { path: '/about', label: 'About', style: styles.about },
+  { path: '/projects', label: 'Projects', style: styles.projects },
+  { path: '/contact', label: 'Contact', style: styles.contact },
+];
+
+function normalize(s: string) {
+  return s.replace(/\/+$/, '') || '/';
+}
 ---
 
-<NavCL currentPath={currentPath} client:load />
+<nav class={styles.navbar}>
+  {links.map(({ path, label, style }) => {
+    const isActive = normalize(currentPath) === normalize(path);
+    return (
+      <a
+        href={path}
+        data-astro-transition
+        class={`${styles.navLink} ${style} ${isActive ? styles.active : ''}`}
+        aria-disabled={isActive}
+        tabindex={isActive ? -1 : undefined}
+      >
+        {label}
+      </a>
+    );
+  })}
+</nav>

@@ -50,6 +50,8 @@ p {
 .project-card {
   background: var(--card-bg);
   color: var(--card-color);
+  contain: layout paint;
+  will-change: transform, opacity;
   padding: 1.5rem;
   display: flex;
   gap: 1rem;
@@ -101,6 +103,7 @@ p {
 .coming-soon {
   position: relative;
   opacity: 0.5;
+  contain: layout;
   pointer-events: none;
   background: var(--soon-bg);
   mix-blend-mode: difference;

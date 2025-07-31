@@ -32,7 +32,7 @@ const ControlPanelCL: FC = () => {
       <div className={styles.control}>
         <Toggle
           id="theme-toggle"
-          label="Spooky Mode (in progress)"
+          label="Spooky Mode"
           value={goffMode === "dark"}
           onToggle={toggleGoff}
         />

@@ -52,6 +52,8 @@ export default function RandomQuoteGen() {
           fontWeight: "bold",
           marginTop: "0.5rem",
           float: "right",
+          position: "relative",
+          zIndex: 2,
         }}
       >
         Reroll

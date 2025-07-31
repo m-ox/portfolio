@@ -27,7 +27,7 @@ export default function ThrowyCL({ item, alt = "", className = "", style = {} }:
   useEffect(() => setIsMounted(true), []);
   if (!isMounted) return null;
 
-  const src = `/throwers/${item}.png`;
+  const src = `/throwers/${item}.webp`;
   const resolvedStyle: React.CSSProperties = {
     width: style.width ?? (isMobile ? "50%" : "15rem"),
     ...style,

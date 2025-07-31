@@ -4,25 +4,25 @@ import Throwy from '../Throwy/Throwy.astro';
 ---
 
 <div class="responsive-column">
-  <Card class="intro">
+  <Card cardIndex={2} class="intro">
     <h1 style="font-size: 2rem;">Hi, I’m Maud.</h1>
     <p>
-      Building tools with code, making messes with paint.<br />
-      Somewhere between structured logic and creative residue.<br />
+      Building tools with code, making messes with paint.
     </p>
     <p>
-      Want to have some fun? If you're in desktop mode you can activate silly mode!<br/>
+      Somewhere between structured logic and creative residue.<br />
     </p>
     <p style="font-family: monospace; font-size: .7rem; color: #555;">
-      Tip: Click around or open your browser dev tools
+      Tip: Want to have some fun? If you're in desktop mode you can activate silly mode!
     </p>
   </Card>
 
-  <Card>
+  <Card cardIndex={9}>
     <p class="quote">
       "His enemy was time. Or perhaps it was his friend. One never knows for sure."
-      <br/>–
-      <a href="https://www.goodreads.com/work/quotes/990732" target="_blank" rel="noopener noreferrer">Thomas Wolfe, You Can't Go Home Again</a>
+    </p>
+    <p>
+      – <a href="https://www.goodreads.com/work/quotes/990732" target="_blank" rel="noopener noreferrer">Thomas Wolfe, You Can't Go Home Again</a>
     </p>
   </Card>
 </div>

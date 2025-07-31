@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from 'react';
+import { type ReactNode } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import styles from './Card.module.scss';
 import { useStore } from '../../store/store';
@@ -8,44 +8,76 @@ interface Props {
   className?: string;
   style?: React.CSSProperties;
   title?: string;
+  cardIndex?: number;
 }
 
-export default function CardCL({ children, className = '', style = {}, title }: Props) {
+const durationCycle = [0.25, 0.35, 0.45] as const;
+const directionCycle = [-10, 0, 10] as const;
+const tapRotateCycle = [-3, 0, 3] as const;
+
+export default function CardCL({ children, className = '', style = {}, title, cardIndex = 0 }: Props) {
   const motionEnabled = useStore((s) => s.motion);
   const isMobile = useStore((s) => s.isMobile);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [8, -8]);
-  const rotateY = useTransform(x, [-100, 100], [-8, 8]);
-
-  if (!isMounted) return null;
+  const rotateX = useTransform(y, [-100, 100], [6, -6]);
+  const rotateY = useTransform(x, [-100, 100], [-6, 6]);
 
   const safeStyle = typeof style === 'object' && style !== null ? style : {};
   const resolvedStyle: React.CSSProperties = {
-    ...(!isMobile && {
-      position: 'relative',
-      zIndex: -1,
-    }),
+    ...(isMobile
+      ? {
+          alignSelf: 'center',
+          width: '90vw',
+        }
+      : {
+          position: 'relative',
+        }),
     ...safeStyle,
   };
 
+  const initialX = directionCycle[cardIndex % directionCycle.length];
+  const duration = durationCycle[cardIndex % durationCycle.length];
+  const tapRotate = tapRotateCycle[cardIndex % tapRotateCycle.length];
+
+  const sharedMotionProps = {
+    initial: { opacity: 0, x: initialX },
+    animate: { opacity: 1, x: 0 },
+    transition: {
+      duration,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  };
+
+  const Title = title && (
+    <h2>
+      {title.split(/(Maud)/i).map((part, idx) =>
+        /Maud/i.test(part) ? (
+          <span key={idx} className="maudlin oxalis">{part}</span>
+        ) : (
+          <span key={idx}>{part}</span>
+        )
+      )}
+    </h2>
+  );
+
   if (isMobile || !motionEnabled) {
     return (
-      <div className={`${styles.card} ${className}`} style={resolvedStyle}>
-        {title && <h2>{title}</h2>}
+      <motion.div
+        className={`${styles.card} ${className}`}
+        style={resolvedStyle}
+        {...sharedMotionProps}
+      >
+        {Title}
         {children}
-      </div>
+      </motion.div>
     );
   }
 
   return (
     <motion.div
+    layout="position"
       className={`${styles.card} ${className}`}
       style={{
         x,
@@ -58,19 +90,10 @@ export default function CardCL({ children, className = '', style = {}, title }: 
       drag
       dragElastic={0}
       dragTransition={{ power: 0.05, timeConstant: 50 }}
-      whileTap={{ scale: 1.02, rotate: Math.random() * 6 - 3 }}
+      whileTap={{ scale: 1.02, rotate: tapRotate }}
+      {...sharedMotionProps}
     >
-      {title && (
-        <h2>
-          {title.split(/(Maud)/i).map((part, idx) =>
-            /Maud/i.test(part) ? (
-              <span key={idx} className="maudlin oxalis">{part}</span>
-            ) : (
-              <span key={idx}>{part}</span>
-            )
-          )}
-        </h2>
-      )}
+      {Title}
       {children}
     </motion.div>
   );

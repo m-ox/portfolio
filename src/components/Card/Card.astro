@@ -1,10 +1,17 @@
 ---
 import CardCL from './CardCL.tsx';
-const { title = '', noPadding = false, class: className = '', style = '' } = Astro.props;
+const {
+  title = '',
+  noPadding = false,
+  class: className = '',
+  style = '',
+  cardIndex = 0,
+} = Astro.props;
+
 const paddingClass = noPadding ? 'no-padding' : '';
 const classes = ['card', paddingClass, className].filter(Boolean).join(' ');
 ---
 
-<CardCL client:load title={title} className={classes} style={style}>
+<CardCL client:visible title={title} className={classes} style={style} cardIndex={cardIndex}>
   <slot />
 </CardCL>
