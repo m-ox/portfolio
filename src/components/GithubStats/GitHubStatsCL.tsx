@@ -50,7 +50,7 @@ const GitHubStats: FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", minHeight: "30rem" }}>
+    <div style={{ position: "relative" }}>
       <AnimatePresence mode="wait">
         {!state.data && !state.error && (
           <motion.div

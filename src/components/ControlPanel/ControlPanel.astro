@@ -3,6 +3,6 @@ import ControlPanelCL from './ControlPanelCL.tsx';
 const { title = '' } = Astro.props;
 ---
 
-<ControlPanelCL client:load>
+<ControlPanelCL client:idle>
   <slot />
 </ControlPanelCL>
