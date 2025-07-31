@@ -8,7 +8,7 @@ interface Props {
   className?: string;
   style?: React.CSSProperties;
   title?: string;
-  cardIndex?: number; // must be passed in from parent deterministically
+  cardIndex?: number;
 }
 
 const durationCycle = [0.25, 0.35, 0.45] as const;
