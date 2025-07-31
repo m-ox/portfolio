@@ -1,12 +1,12 @@
 :root[data-theme='light'] {
   --card-bg: #ffffff;
-  --card-color: #000000;
+  --card-color: #111010;
   --card-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 :root[data-theme='dark'] {
-  --card-bg: #292828;
+  --card-bg: #111010;
   --card-color: #ffffff;
   --card-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
   --card-shadow-hover: 0 4px 16px rgba(255, 255, 255, 0.1);
