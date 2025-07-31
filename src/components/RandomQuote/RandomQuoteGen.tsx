@@ -34,7 +34,6 @@ export default function RandomQuoteGen() {
   const [quote, setQuote] = useState<string>(quotes[12]);
 
   const handleReroll = () => {
-    console.log('click')
     const getRandom = () => quotes[Math.floor(Math.random() * quotes.length)];
     setQuote(getRandom());
   };
@@ -53,6 +52,8 @@ export default function RandomQuoteGen() {
           fontWeight: "bold",
           marginTop: "0.5rem",
           float: "right",
+          position: "relative",
+          zIndex: 2,
         }}
       >
         Reroll
