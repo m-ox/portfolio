@@ -5,6 +5,6 @@ const paddingClass = noPadding ? 'no-padding' : '';
 const classes = ['card', paddingClass, className].filter(Boolean).join(' ');
 ---
 
-<CardCL client:load title={title} className={classes} style={style}>
+<CardCL client:visible title={title} className={classes} style={style}>
   <slot />
 </CardCL>

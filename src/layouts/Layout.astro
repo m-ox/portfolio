@@ -10,6 +10,31 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      html[data-theme='light'] {
+        --nav-bg: #eee;
+        --nav-shadow: #9560d38f;
+        --nav-link: #444;
+        background: #eee;
+        color: #000;
+      }
+
+      html[data-theme='dark'] {
+        --nav-bg: #16151c;
+        --nav-shadow: #5e40b1aa;
+        --nav-link: #ddd;
+        background: #16151c;
+        color: #ddd;
+      }
+
+      body {
+        margin: 0;
+        background: var(--nav-bg);
+        color: var(--nav-link);
+      }
+    </style>
+
+
     <script>
       (() => {
         const theme = localStorage.getItem('theme')
@@ -67,7 +92,8 @@ const { title } = Astro.props;
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
     <Highlighter client:load />
       <ViewportWatcher client:only="react" />
-      <Nav />
+      <Nav currentPath={Astro.url.pathname} />
+
       <main style="flex: 1; align-self: anchor-center;">
         <slot />
       </main>

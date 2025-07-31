@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { FC } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { awards } from "../../utils/awards";
 import LoaderDots from "../LoaderDots/LoaderDots";
 import { useStore } from "../../store/store";
@@ -15,86 +16,120 @@ type GitHubStatsResponse = {
 };
 
 const GitHubStats: FC = () => {
-  const [data, setData] = useState<GitHubStatsResponse | null>(null);
-  const [onGitHubPages, setOnGitHubPages] = useState(false);
-  const [error, setError] = useState(false);
   const isMobile = useStore((s) => s.isMobile);
+  const [state, setState] = useState<{
+    data: GitHubStatsResponse | null;
+    error: boolean;
+  }>({ data: null, error: false });
 
   useEffect(() => {
-    const onGitHub = window.location.hostname.includes("github.io");
-    setOnGitHubPages(onGitHub);
-
-    if (onGitHub) {
-      setError(true);
+    if (window.location.hostname.includes("github.io")) {
+      setState({ data: null, error: true });
       return;
     }
 
     fetch("/api/github")
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch GitHub stats");
+        if (!res.ok) throw new Error();
         return res.json();
       })
       .then((json) => {
-        if (
+        const valid =
           typeof json.totalCommits === "number" &&
           typeof json.averageLength === "number" &&
-          typeof json.totalRepos === "number"
-        ) {
-          setData(json);
-        } else {
-          console.warn("Invalid GitHub stats shape:", json);
-          setError(true);
-        }
+          typeof json.totalRepos === "number";
+        setState({ data: valid ? json : null, error: !valid });
       })
-      .catch(() => setError(true));
+      .catch(() => setState({ data: null, error: true }));
   }, []);
 
-  // just in case we are on static production
-  if (error) {
-    return (
-      <div style={{ height: isMobile ? "100%" : "40rem", width: isMobile ? "100%" : "42rem" }}>
-        <img
-          src="https://ghchart.rshah.org/m-ox"
-          alt="GitHub Contribution Chart"
-          loading="lazy"
-          style={{ width: "100%", maxWidth: "100%", marginBottom: "1rem" }}
-        />
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <div style={{ height: isMobile ? "100%" : "30rem", width: isMobile ? "100%" : "25rem" }}>
-        <LoaderDots />
-      </div>
-    );
-  }
+  const baseStyle = {
+    width: isMobile ? "100%" : "25rem",
+    height: isMobile ? "100%" : state.error ? "40rem" : "30rem",
+    position: "relative" as const,
+  };
 
   return (
-    <div style={{ width: isMobile ? "100%" : "25rem" }}>
-      <p>
-        <strong>Total commits:</strong> {data.totalCommits} (
-        {isFinite(data.totalCommits) ? (data.totalCommits / 365).toFixed(1) : "?"} per day — seek help.)
-      </p>
-      <p>
-        <strong>Most common first word:</strong>{" "}
-        <code>{data.mostCommonFirstWord}</code> (truly inspired.)
-      </p>
-      <p>
-        <strong>Average commit length:</strong>{" "}
-        {isFinite(data.averageLength) ? `${data.averageLength.toFixed(1)} chars` : "?"} (probably too much.)
-      </p>
+    <div style={{ position: "relative", minHeight: "30rem" }}>
+      <AnimatePresence mode="wait">
+        {!state.data && !state.error && (
+          <motion.div
+            key="loader"
+            style={baseStyle}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <LoaderDots />
+          </motion.div>
+        )}
 
-      <h4>Awards:</h4>
-      {awards(data).map((award, idx) => (
-        <p key={idx}>{award}</p>
-      ))}
+        {state.error && (
+          <motion.div
+            key="error"
+            style={{ ...baseStyle, width: isMobile ? "100%" : "42rem" }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img
+              src="https://ghchart.rshah.org/m-ox"
+              alt="GitHub Contribution Chart"
+              loading="lazy"
+              style={{ width: "100%", maxWidth: "100%", marginBottom: "1rem" }}
+            />
+          </motion.div>
+        )}
 
-      <h4>Longest commit message:</h4>
-      <pre style={{ whiteSpace: "pre-wrap", fontSize: "0.85rem", height: "6rem", overflow: "auto" }}>
-        <i>"{data.longestMessage}"</i>
-      </pre>
+        {state.data && (
+          <motion.div
+            key="data"
+            style={baseStyle}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ duration: 0.3 }}
+          >
+            <p>
+              <strong>Total commits:</strong> {state.data.totalCommits} (
+              {isFinite(state.data.totalCommits)
+                ? (state.data.totalCommits / 365).toFixed(1)
+                : "?"}{" "}
+              per day — seek help.)
+            </p>
+            <p>
+              <strong>Most common first word:</strong>{" "}
+              <code>{state.data.mostCommonFirstWord}</code> (truly inspired.)
+            </p>
+            <p>
+              <strong>Average commit length:</strong>{" "}
+              {isFinite(state.data.averageLength)
+                ? `${state.data.averageLength.toFixed(1)} chars`
+                : "?"}{" "}
+              (probably too much.)
+            </p>
+
+            <h4>Awards:</h4>
+            {awards(state.data).map((award, idx) => (
+              <p key={idx}>{award}</p>
+            ))}
+
+            <h4>Longest commit message:</h4>
+            <pre
+              style={{
+                whiteSpace: "pre-wrap",
+                fontSize: "0.85rem",
+                height: "6rem",
+                overflow: "auto",
+              }}
+            >
+              <i>"{state.data.longestMessage}"</i>
+            </pre>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

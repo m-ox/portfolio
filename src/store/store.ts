@@ -14,7 +14,7 @@ type AppState = {
 export const useStore = create<AppState>((set: (arg0: { isMobile?: any; goffMode?: any; motion?: any; }) => any) => ({
   isMobile: false,
   setIsMobile: (val: any) => set({ isMobile: val }),
-  goffMode: 'light',
+  goffMode: 'dark',
   setGoffMode: (val: any) => set({ goffMode: val }),
   motion: true,
   setMotion: (val: any) => set({ motion: val }),
