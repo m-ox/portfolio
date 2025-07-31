@@ -66,20 +66,30 @@ const GitHubStats: FC = () => {
         )}
 
         {state.error && (
+          // <motion.div
+          //   key="error"
+          //   style={{ ...baseStyle, width: isMobile ? "100%" : "42rem" }}
+          //   initial={{ opacity: 0, x: -50 }}
+          //   animate={{ opacity: 1, x: 0 }}
+          //   exit={{ opacity: 0, x: 50 }}
+          //   transition={{ duration: 0.3 }}
+          // >
+          //   <img
+          //     src="https://ghchart.rshah.org/m-ox"
+          //     alt="GitHub Contribution Chart"
+          //     loading="lazy"
+          //     style={{ width: "100%", maxWidth: "100%", marginBottom: "1rem" }}
+          //   />
+          // </motion.div>
           <motion.div
-            key="error"
-            style={{ ...baseStyle, width: isMobile ? "100%" : "42rem" }}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.3 }}
+            key="loader"
+            style={baseStyle}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <img
-              src="https://ghchart.rshah.org/m-ox"
-              alt="GitHub Contribution Chart"
-              loading="lazy"
-              style={{ width: "100%", maxWidth: "100%", marginBottom: "1rem" }}
-            />
+            <LoaderDots />
           </motion.div>
         )}
 

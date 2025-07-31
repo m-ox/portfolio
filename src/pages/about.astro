@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="About Me">
 
   <section class="section-container">
-    <Card title="About Me">
+    <Card cardIndex={5} title="About Me">
       <div class="about-flex">
         <img src="/maud.webp" loading="lazy" alt="Maud Nordby" style="width: 200px; height:  200px; border-radius: 50%; object-fit: cover;" />
 
@@ -26,13 +26,13 @@ import Layout from '../layouts/Layout.astro';
     </Card>
 
     <div class="about-container">
-      <Card title="Summary">
+      <Card cardIndex={7} title="Summary">
         <p class="about-summary">
           I’m a <span class="hl-1">full-stack software engineer</span> who thrives on turning real-world problems into <span class="hl-2">user-centered, performant systems</span>. I’ve contributed to projects ranging from <span class="hl-3">Java and Node backends</span> to <span class="hl-4">TypeScript frontends built with React and Electron</span>. Much of my recent work has focused on building intuitive healthcare tools in <span class="hl-1">FHIR-compliant environments</span>, where I value <span class="hl-2">clean interfaces</span> and <span class="hl-3">ethical responsibility</span>. I move easily between feature development, refactoring, and internal documentation, and I gravitate toward <span class="hl-4">mission-driven teams</span> that prioritize clarity and autonomy.
         </p>
       </Card>
 
-      <Card title="Badge Board">
+      <Card cardIndex={11} title="Badge Board">
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           {[
             'HTML', 'CSS', 'Python', 'JavaScript', 'TypeScript',

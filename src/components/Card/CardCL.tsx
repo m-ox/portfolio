@@ -1,4 +1,4 @@
-import { type ReactNode, useRef } from 'react';
+import { type ReactNode } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import styles from './Card.module.scss';
 import { useStore } from '../../store/store';
@@ -8,12 +8,14 @@ interface Props {
   className?: string;
   style?: React.CSSProperties;
   title?: string;
+  cardIndex?: number; // must be passed in from parent deterministically
 }
 
 const durationCycle = [0.25, 0.35, 0.45] as const;
 const directionCycle = [-10, 0, 10] as const;
+const tapRotateCycle = [-3, 0, 3] as const;
 
-export default function CardCL({ children, className = '', style = {}, title }: Props) {
+export default function CardCL({ children, className = '', style = {}, title, cardIndex = 0 }: Props) {
   const motionEnabled = useStore((s) => s.motion);
   const isMobile = useStore((s) => s.isMobile);
 
@@ -31,14 +33,13 @@ export default function CardCL({ children, className = '', style = {}, title }: 
         }
       : {
           position: 'relative',
-          // zIndex: -1,
         }),
     ...safeStyle,
   };
 
-  const localIndexRef = useRef(Math.floor(Math.random() * directionCycle.length));
-  const initialX = directionCycle[localIndexRef.current % directionCycle.length];
-  const duration = durationCycle[localIndexRef.current % durationCycle.length];
+  const initialX = directionCycle[cardIndex % directionCycle.length];
+  const duration = durationCycle[cardIndex % durationCycle.length];
+  const tapRotate = tapRotateCycle[cardIndex % tapRotateCycle.length];
 
   const sharedMotionProps = {
     initial: { opacity: 0, x: initialX },
@@ -76,6 +77,7 @@ export default function CardCL({ children, className = '', style = {}, title }: 
 
   return (
     <motion.div
+    layout="position"
       className={`${styles.card} ${className}`}
       style={{
         x,
@@ -88,7 +90,7 @@ export default function CardCL({ children, className = '', style = {}, title }: 
       drag
       dragElastic={0}
       dragTransition={{ power: 0.05, timeConstant: 50 }}
-      whileTap={{ scale: 1.02, rotate: Math.random() * 6 - 3 }}
+      whileTap={{ scale: 1.02, rotate: tapRotate }}
       {...sharedMotionProps}
     >
       {Title}
